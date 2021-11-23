@@ -1,0 +1,2223 @@
+-- midasTouch
+-- breakcore_155BPM
+-- breakcore_160BPM
+-- breakcore_DOA_breaks
+-- breakcore_New_Breaks
+-- hottest_party_2
+-- SFX
+-- Tenkitsune_Kick
+-- Tenkitsune_Snare
+-- crime_pays
+-- stand_up_tall
+-- palmolive
+-- fafo
+-- serious_shit
+-- c_set_intro
+
+bpm 100
+bpm 120
+bpm 140
+ 
+d1 $ iter (4) $ "808oh(16,8)" & gain (8/8) & speed (4/8) 
+
+do
+  hush
+  bpm 100
+  all $ (# hpf ((7/8)*2000) )
+  d2  $ "808bd:5*4" # cut (1) & gain (16/8) 
+         # orbit (0) # shape (6/8) & speed (11/16) 
+  d1 
+   $ (|+| begin ((slow 4 $  discretize (8) $ sine*0.3)))
+   $ fast (2) $  chop (2) $ 
+     "{alphabet:2 alphabet:17 alphabet:14 alphabet:1 alphabet:14}%4"
+            # shape (6/8) # cut "-1" & speed (12/8) 
+               & gain (8/8) # waveloss (16) # rel (7/8) 
+                  # distort (8/8) |+| begin 0.01
+
+do
+  all $ id
+  all $ linger ("<5 3 3 [8 <1 0.5>] 8>"/8) . chop (4)
+  all $ while ( slow (2) $ iter (4) $ "<0 0 0 0 0 0 1>") (linger ("<5 3 3 [8 <1 0.5>] 8>"/8) . chop (4) )
+  hush
+  d1 $ loopAt 16 $ fast (1) $ linger (8/8) $ slice (32) 
+        ( fast (8) $ "[0 1 2 3]*2" + "<0 8>") $ "midasTouch" & gain (11/8) 
+        # n "<2>" # accelerate ("<16 8>"/8) 
+         -- riff on n
+  d2 $ slow ("<4!3 [4 2]>") $ "808bd:8*16?0.7" & gain (16/8) # orbit (0) 
+              # rel (2/16) # shape (4/8) # room (2/8) # size (3/8) 
+                & speed (16/8) # distort (4/8) 
+
+once $ "c_set_intro:0 " & gain (13/8) 
+      # cut (1) 
+       
+once $ "c_set_intro:1*3" & gain (13/8) 
+      # cut (1) & speed ("6 8"/8) 
+       
+
+once $ "c_set_intro:2*12 c_set_intro:2*4 c_set_intro:2" & gain (13/8) 
+      # cut (1) |+| begin "0.1 0.2 0.1 0 "
+       
+
+once $ "c_set_intro:3" & gain (13/8) 
+      # cut (1) # waveloss (40) 
+       
+do
+  all $ id
+  all $ linger ("<5 3 3 [8 <1 0.5>] 8>"/8) . chop (4)
+  all $ while ( slow (2) $ iter (4) $ "<0 0 0 0 0 0 1>") (linger ("<5 3 3 [8 <1 0.5>] 8>"/8) . chop (4) )
+  hush
+  d1 $ loopAt 16 $ fast (1) $ linger (8/8) $ slice (32) 
+        ( fast (8) $ "[0 1 2 3]*2" + "<0 8>") $ "midasTouch" & gain (11/8) 
+        # n "<3>" # accelerate ("<16 8>"/8) 
+         -- riff on n
+  d2 $ slow ("<4!3 [4 2]>") $ "808bd:8*16?0.7" & gain (16/8) # orbit (0) 
+              # rel (2/16) # shape (4/8) # room (2/8) # size (3/8) 
+                & speed (16/8) # distort (4/8) 
+                 
+once $ (|+| begin "0.1@3 0") $ (# accelerate "-7 -4 9 0")
+      $ fast (2) $  linger ("3 2 1 8"/24) $ iter (2) $ "c_set_intro:4(5,8)" & gain (13/8) 
+      # cut (1) # distort (0/8) 
+   
+-- dirty break intro 1/1
+do
+  all $ linger (3/16) .  chop (16)
+  all $ id
+  hush
+  d2 $ loopAt 4 $ chop (4) $ slice (8) "0 1 2 3 4 5 6 7" $ "breakcore_160BPM"
+	    # n "<[20@3 19] [20@7 19]>" # orbit (0) & gain (10/8) # shape (1/8)  # cut "-1"
+              # distort (8/16) # hpf ((5/8)*2000) 
+               
+-- dirty break 1/2
+do
+  all $ linger (6/16) .  chop (16)
+  all $ id
+  hush
+  d1 $ loopAt 4 $ chop (4) $ slice (8) "0 1 2 3 4 5 6 7" $ "breakcore_160BPM"
+	    # n "<[20@3 <28 29 30 31>]>" # orbit (0) & gain (11/8) # shape (1/8)  # cut "-1"
+              # distort (6/16) # room (1/8) 
+  d2 $ slow (4) $ n "2 2(3,8) 2 [~ 5*4?]" # "808bd" & gain (16/8) # orbit (0) 
+              # rel (16/16) # shape (7/8) # distort (2/8) 
+                & speed (7/8) # waveloss (8) 
+                 
+-- dirty break 2/2
+-- riff on this version
+do
+  all $ linger (2/16) .  chop (8)
+  all $ iter (2) . chop (2)
+  all $ id
+  hush
+  d1 $ plyWith ( iter (4) $ "1@3 2") ((# room (2/8) )) $ loopAt 4 $ chop (4) $ slice (8) "0 1 2 3 4 5 6 7" $ "breakcore_160BPM"
+	    # n "<[20@3 <28 29 30 31>]>" # orbit (0) & gain (10/8) # shape (1/8)  # cut "-1"
+              # distort (9/16) # room (2/8) 
+  d2 $ slow (4) $ n "2 2(3,8) 2 [~ 5*4?]" # "808bd" & gain (16/8) # orbit (0) 
+              # rel (16/16) # shape (7/8) # distort (2/8) 
+                & speed (7/8) # waveloss (10) 
+  d3 $ while "<0!3 [0 1]>" ( fast ("1@3 1.5")) $ fast (4) $ n "2 0 0 0" # "808oh"# cut (-1) 
+	& gain (11/8) # shape (1/8) & speed (8/8) # accelerate (-1/16) # lpf ((22/8)*2000) 
+         # rel ("[2|3]"/16) # pan (7/8) 
+               
+-- wonky interlude 1/1
+do
+  all $ (# lpf ((21/8)*2000) )
+  hush
+  all $ id
+  all $ linger ("3@4 2@2 2@2"/8) . chop (2) . superimpose ((# lpf ((20/8)*2000) ))
+  d2 $ loopAt "[4|4|4|4|4|4|4|2]*2" $ ply ("{1 2 1}%4") $ chop (4) $ slice (8) "0 1 2 3 4 5 6 7" $ "breakcore_160BPM"
+	    # n "[27]" # orbit (0) & gain (10/8) # shape (1/8) # cut "-1" 
+  d1 $ loopAt 8 $ chop (4) $ slice (16) ( fast (4) $  "[0] [1] [2] [3] [4] [5] [6] [7]"+ "<0 8>") $ "midasTouch"
+	# n "<0 1>" & speed (12/8) # cut "-1" # shape (5/8) 
+         
+-- dirty interlude 1/1
+do
+  all $ id
+  all $ linger (1/16) .  chop (8)
+  hush
+  d2 $ loopAt 8 $  fast (4) $ slice (8) "0*8" $ "breakcore_160BPM"
+	    # n "[20]" # orbit (0) & gain (10/8) # shape (1/8)  # cut "-1"
+              # distort (8/16) 
+  d1 $  slow (1) $ linger ("3@4 2@2 2@2"/8) . chop (4) $ loopAt 4 
+      $ slice (16) ( fast (2) $  "[0] [1] [2] [3] [4] [5] [6] [7]"+ "<0 8>") 
+       $ "midasTouch" # n 0 & speed (12/8) # cut "-1" # shape (6/8) & gain (10/8) 
+          # accelerate (-4/8) # pan ( discretize (8) $ range 0.3 0.7 rand)
+         
+-- wonky beat 1/1
+do
+  all $ id
+  hush
+  all $ id
+  d2 $ linger ("3@4 2@2 2@2"/8) . chop (2) $ loopAt 4 
+    $ slice (32) ( fast (4) $ "[0]*<1 2 1 3 > [1 0*<0 1>] [2] [3] [4] [5] [6] [7]"+ "<0 8 16 24>")
+	$ "breakcore_160BPM" 
+          # n (54) # orbit (0) & gain (14/8)  # cut "-1" # shape (3/8) 
+  d1 $ slow (1) $ fast (2) $ linger ("3@4 2@2 2@2"/8) . chop ("[4@3 3]*4") $ loopAt 4 
+      $ slice (16) ( fast (2) $ "[0] [1] [2] [3] [4] [5] [6] [7]"+ "<0 8>") 
+       $ "midasTouch" # n 2 # cut "0" # shape (6/8) & gain (10/8) 
+          # accelerate (rarely (*(-1)) $ -1/16) # pan ( discretize (8) $ range 0.3 0.7 rand)
+           & speed (8/8) # rel (1/8) # hpf ((1/8)*2000) 
+  d3 $ "808bd:12*<1!3 <2 [4 <6 12>]>> 808sd:-1*<1!7 [8 1@3]>" & gain (16/8) # orbit (0) 
+              # rel (2/16) # distort (5/16) # shape (7/8) & speed (10/8) 
+               
+
+-- wonky beat 1/1
+do
+  all $ id
+  hush
+  all $ id
+  d2 $ linger ("3@4 2@2 2@2"/8) $ chop (2) $ loopAt 4 
+     $ slice (32) ( fast (4) $ "[0]*<1 2 1 3 > [1 0*<0 1>] [2] [3] [4] [5] [6] [7]"+ "<0 8 16 24>")
+	$ "breakcore_160BPM" 
+          # n 56 # orbit (0) & gain (14/8)  # cut "-1" # shape (3/8) 
+            # lpf ((8/8)*2000) & speed (8/8) # orbit (0) 
+  d3 $ slow (1) $ "808bd:12 ~ 808sd:-1 808bd ~ 808sd:-1 808bd:12 ~" & gain (16/8) # orbit (0) 
+              # rel (1/16) # distort (4/16) # shape (4/8) # orbit (0) 
+  d1 $ loopAt 2 $ slow (2) $ ply ("2") $ chop (1) 
+     $ slice (4) "[0] [2] [2] [2@3 0*<1 2>]" $ "midasTouch"
+      # cut "-1" # shape (4/8) # distort (1/8) & gain (12/8) # orbit (0) 
+        # pan "[0.4@3 0.8]*2" # accelerate ("[0 2]*4"/16) 
+          & speed (4/8) 
+
+-- light groove transition 1/2
+do
+  all $ plysl 8 . iter (8) 
+  all $ id
+  hush
+  d2 $ loopAt 4 $ slice (8) "0 1 1 1 2 1 <1 6>*2 3" $ "breakcore_155BPM"
+	    # n 29 # orbit (0) & gain (11/8) # shape (7/8) 
+              # hpf ((2/8)*2000) # room (1/8) # lpf ((26/8)*2000) 
+  d1 $ loopAt 2 $ slow (2) $ ply ("2") $ chop (1) 
+     $ slice (4) "[0] [2] [2] [2@3 0*<1 2>]" $ "midasTouch"
+    # cut "-1" # shape (4/8) # distort (1/8) & gain (10/8) 
+  d3 $ while "<0!3 [0 1]>" ( fast ("1@3 1.5")) $ fast (4) $ n "2 0 0 0" # "808oh"# cut (-1) 
+	& gain (10/8) # shape (1/8) & speed (6/8) # accelerate (-1/16) # lpf ((22/8)*2000) 
+         
+ 
+-- light groove transition 2/2
+-- lingery
+-- tightaf next
+do
+  hush
+  all $ id
+  all $ linger ( slow (2) $  "<3 3 3 4 3 3 5 8>"/8) . chop (4) 
+  d2 $ loopAt 4 
+     $ slice 32 ( fast 4 $ inside 2 (iter (4)) $ 
+                "[0] [1] [3] [1] [1] [0] [<2!7 0>] [<7 7>]" + "<24>") $ "breakcore_155BPM" 
+      # n 12 # orbit (0) & gain (11/8) # shape (2/8) # room (3/8)  
+  d1 $ loopAt 2 $ slice (4) "[0] [1@6 3 0] [2] [3@3 0*<1 2>]" $ "midasTouch"
+    # cut "1" # shape (2/8) & gain (11/8) 
+     
+ 
+-- tight as fuck 1/2
+do
+  hush
+  all $ while "<[0 1] [1 0 0 <0 0 0 1>]>" (linger ( "<3 3 3 4 3 3 5 8>"/8) . chop 2) 
+  all $ id
+  d2 $ loopAt 8 
+     $ slice 32 ( fast 4 $ 
+       "[0] [1] [1] [0] [4] [2] [<2 4 4>] [<0 1 3 [2 2 0]>]" + "<0 8 16 24>") 
+       $ "breakcore_160BPM" 
+      # n (-12) # orbit (0) & gain (14/8) # shape (1/8) 
+        # lpf ((16/8)*2000) 
+  d1 $ loopAt 4 $ slice (16) "[0 1 2 3] [4 4 [12 13 14 15] 0] [8 9 10 11] [[12 13 14]@3 0*<1 2>]" $ "midasTouch"
+        # n 2 # cut "1" # shape (4/8) & gain (12/8) # lpf ((10/8)*2000) 
+  d3 $ fast (2) $ n "4 0 0 0*<1!7 2>" # "808oh"# cut (-1) 
+	& gain (10/8) # rel (7/8) # shape (1/8) & speed (6/8) # accelerate (-1/16) 
+         
+
+-- tight as fuck 2/2
+do
+  hush
+  all $ while "<0!3 1>" (linger ( "<3 3 3 4 3 3 5 8>"/8) . chop 2 ) 
+  all $ while "<[0 1] [1 0 0 <0 0 0 1>]>" (linger ( "<3 3 3 4 3 3 5 8>"/8) . chop 3) 
+  all $ id
+  d2 $ loopAt 4 
+     $ slice 32 ( fast 4 $  linger (8/8) $ 
+          "[0]*<8 1!7> [0 1] [1] [0*<2!3 3>] [2 8] [1] [<3 4>] [<2 1 6 [2 2 0]>]" + "<0 8 16 24>") 
+       $ "breakcore_160BPM" 
+      # n (-12) # orbit (0) & gain (12/8) # shape (5/8) 
+        # rel (1/8) # room (1/16) # distort (3/8) 
+           # lpf ((11/8)*2000) 
+  d1 $ loopAt 4 $ slice (16) 
+        "[0 1 2 3] [4 4 [12 13 14 15] 0] [8 9 10 11] [[12 13 14]@3 0*<1 2>]" 
+        $ "midasTouch"
+        # n 3 # cut "1" # shape (2/8) & gain (12/8)
+         
+  d3 $ fast (3) $ iter (2) $ n "4 0 0 0*<1!7 2>" # "808oh"# cut (-1) 
+	& gain (9/8) # rel (7/8) # shape (3/8) & speed (6/8) # accelerate (-3/16) 
+         
+           
+-- tight as fuck soloBreak 1/4
+do
+  all $ (& speed (4/8) ) . linger (6/16)
+  all $ linger (4/16) . chop 2
+  all $ id
+  all $ linger (6/16) . chop 2
+  hush
+  all $ while 
+	( slow (2) $ iter (4) $ "<<0 1> 1>") 
+	(linger ( "<3 3 3 4 3 3 5 8>"/8) . chop 1 ) 
+  d2 $ loopAt 4 
+     $ slice 32 ( fast 4 $ 
+                "[0] [1] [1] [0] [2] [1] [1] [<0 1 3 [2 2 0]>]" + "<0 8 16 24>") $ "breakcore_155BPM" 
+      # n 19 # orbit (0) & gain (11/8) # distort (1/8) 
+  d3 $ fast (2) $ n "4 0 3 <0!4 6>" # "808oh"# cut (-1) 
+	& gain (9/8) # shape (4/8) & speed (8/8) # accelerate (-1/16) 
+          # rel (2/16) 
+           
+-- tight as fuck soloBreak 2/4
+-- lingery
+do
+  all $ id
+  hush
+  all $ while 
+	( slow (2) $ iter (4) $ "<<0 1> 1>") 
+	(linger ( "<3 3 3 4 3 3 5 8>"/8) . chop 1 ) 
+  d2 $ loopAt 4 
+     $ slice 32 ( fast 4 $ 
+                "[0] [1] [1] [0] [2] [1] [1] [<0 1 3 [2 2 0]>]" + "<0 8 16 24>") $ "breakcore_155BPM" 
+      # n "<19!3 [19@3 18]>" # orbit (0) & gain (11/8) # distort (1/8) 
+  d3 $ fast (2) $ n "4 0 3 <0!4 6>" # "808oh"# cut (-1) 
+	& gain (9/8) # shape (4/8) & speed (8/8) # accelerate (-1/16) 
+          # rel (2/16) 
+  d1 $ "[Tenkitsune_Kick:8(<3 [2 2 4 6]>,8,<0 4>),~]" & gain (16/8) # orbit (0) 
+              # rel ("{4!9 16}%2"/16) # shape (5/8) 
+           
+-- tight as fuck soloBreak 3/4
+do
+  hush
+  all $ while ( slow (2) $ iter (4) $ "<<0 1> 1>") (linger ( "<3 3 3 4 3 3 5 8>"/8) . chop 2 ) 
+  all $ linger (1/16)
+  all $ id
+  d2 $ loopAt 4 
+     $ slice 32 ( fast 4 $ 
+                "[0] [1] [1] [0] [2] [1] [1] [<0 1 3 [2 2 0]>]" + "<0 8 16 24>") $ "breakcore_155BPM" 
+      # n 19 # orbit (0) & gain (11/8) # distort (5/16) 
+            # room (1/8) # size (1/16) 
+  d3 $ fast (2*2) $ n "4 0 3 <0!4 6>" # "808oh"# cut (-1) 
+	& gain (9/8) # shape (4/8) & speed (8/8) # accelerate (-1/16) 
+          # rel ("[1@3 4]*2"/16) # pan (rand) 
+  d1 $ "[Tenkitsune_Kick:16(<3 [2 2 4 6]>,8,<0 4>),~ ~ 808sd:-1*<1 2 1!6> ~ ~ 808sd:1 ~ ~]" & gain (16/8) # orbit (0) 
+              # rel (3/16) # shape (5/8) # distort (0/8) 
+               
+           
+-- tight as fuck soloBreak 4/4
+let ahh = while ( slow (2) $ iter (4) $ "<<0 1> 1>") (linger ( "<3 3 3 4 3 3 5 8>"/8) . chop 1 ) 
+in do
+  all $ id
+  hush
+  all $ id
+  d2 $ (# n "[19 [11|11|11|11|11|10]*<2 4>]/2") $ ahh $ loopAt 4 
+     $ chop (2) $ slice 32 ( fast 4 $ 
+        "[0] [1] [1] [0] [2] [1] [1] [<0 1 3 [2 2 0]>]" + "<0 8 16 24>") $ "breakcore_155BPM" 
+      # orbit (0) & gain (14/8) # distort (3/16) 
+            & speed ("[8@15 4]/4"/8) 
+  d3 $ fast (2) $ n "4 0 3 <0!4 6>" # "808oh"# cut (-1) 
+	& gain (10/8) # shape (4/8) & speed (8/8) # accelerate (-1/16) 
+          # rel (2/16) # pan (rand) 
+  d1 $ "[808bd:3(3,8,<0!3 4>),~ 808sd:-1]" & gain (16/8) # orbit (0) 
+              # rel (2/16) # shape (6/8) 
+               
+-- breaks variation outro type
+let ahh = while ( slow (2) $ iter (4) $ "<<0 1> 1>") (linger ( "<3 3 3 4 3 3 5 8>"/8) . chop 1 ) 
+in do
+  hush
+  all $ iter (8)
+  all $ id
+  d2 $ (# n "[[7|11|10|18]*<4>]") $ ahh $ loopAt 4 
+     $ chop (2) $ slice 32 ( fast 4 $ 
+        "[0] [1] [1] [0] [2] [1] [1] [<0 1 3 [2 2 0]>]" + "<0 8 16 24>") $ "breakcore_155BPM" 
+      # orbit (0) & gain (14/8) # distort (3/16) 
+            & speed ("[8@15 4]/4"/8) 
+  d3 $ fast ("<2!7 1.5> <4!3 [4 8]>") $ n "4 0 3 <0!4 6>" # "808oh"# cut (-1) 
+	& gain (10/8) # shape (4/8) & speed (6/8) # accelerate (-1/16) 
+          # rel (1/16) 
+  d1 $ "[808bd:13(<8 [3 4]>,8,<0!3 4>)?0.4,~ 808sd:-1]" & gain (16/8) # orbit (0) 
+              # rel (3/16) # shape (6/8) 
+               
+-- midas:2 transition airy
+-- next is deep+heavy
+let ahhhh = while ( slow (1) $ iter (4) $ "<<0 1> 1>") 
+            (linger ( "<3 3 3 4 3 3 5 8>"/8) . chop 2 . slow ("2 1@3") ) 
+in do
+  all $ id
+  hush
+  d2 $ ahhhh $ loopAt 4 
+     $ slice 32 ( fast 4 $ 
+                "[0] [1] [1] [0] [2] [1] [1] [<0 1 3 [2 2 0]>]" + "<0 8 16 24>") 
+       $ "breakcore_160BPM" 
+      # n 19 # orbit (0) & gain (11/8) # distort (0/8) 
+        # hpf ((1/8)*2000) 
+  d1 $ loopAt 4 $ slice (16) "[0 1 2 3] [4 4 [12 13 14 15] 0] [8 9 10 11] [[12 13 14]@3 0*<1 2>]" 
+       $ "midasTouch"
+        # n "[1@3 0]" # cut "0" # shape (3/8) & gain (11/8) # rel (3/8) 
+	# cut (1) & speed ((9/12) * ("[3 9 ~ 24,12]"/12))
+  d3 $ fast (4) $ n "4 0 3 <0!4 6>" # "808oh"# cut (-1) 
+	& gain (9/8) # shape (4/8) & speed (8/8) # accelerate (-1/16) 
+          # rel (2/16) 
+
+-- deep+heavy prelude 1/1
+do
+  all $ linger (1/16) 
+  all $ plysl ("<1 1 <1 2> 2>") . chop "2"
+  all $ id
+  hush 
+  d1 $ loopAt 4 $ chop (2) $ slice (16) ( fast (2) $ 
+     "[0] [1] [2] [3] [4] [5] [6] [7]" + "<0>") $ "midasTouch"
+        # n "<6>" # cut "-1" & speed (2/8) # rel (6/8) 
+  	    # shape (4/8) & gain (10/8) # cut (1) 
+  d2 $ loopAt 4 
+     $ slice 32 ( fast 2 $ 
+          "[0] [1] [2 0] [~ 0] [~] [< ~!3 1 >] [6] [7]" + "0") 
+     $ "breakcore_160BPM"
+	    # n 57 # cut "-1" & gain (15/8)
+	      & speed (8/16) # shape (2/8) 
+               
+
+-- deep+heavy solo 1/2
+do
+  all $ linger (16/16) .  iter (4)
+  all $ id
+  hush 
+  d2 $ loopAt 4 
+     $ slice 32 ( fast 2 $ 
+                "[0] [1] [2] [3] [4] [5] [6] [7]" + "0")$ "breakcore_160BPM:0"
+	    # n 57 # cut "-1" & gain (15/8)
+	      & speed (8/16) # krush (4) # shape (2/8) 
+  d3 $ fast ("<2!7 1.5> <4!3 [4 8]>") $ n "4 0 3 <0!4 6>" # "ho"# cut (-1) 
+	& gain (10/8) # shape (4/8) & speed (6/4) # accelerate (-8/16) 
+          # rel (1/16)  
+           
+-- deep+heavy solo 2/2
+do
+  all $ linger (6/16) 
+  all $ id
+  hush 
+  d2 $ loopAt 4 
+     $ plyWith (iter (2) $ "[2 1@3]*2") (( shiftBy ("[0 2 3 4]/2"/16)).(# cut 0).(ply 2)) 
+     $ chop (1) $ slice 32 ( fast 2 $ 
+                "[0] [1] [2] [3] [4] [5] [6] [7]" + "0")$ "breakcore_160BPM:0"
+	    # n 57 # cut "-1" & gain (14/8)
+	      & speed (8/16) # krush (4) # shape (3/8) 
+  d3 $ fast (2*2) $ n "4 0 3 <0!4 6>" # "ho"# cut (-1) 
+	& gain (9/8) # shape (4/8) & speed (8/8) # accelerate (3) 
+          # rel (1/16) # room (2/8) # size (2/8) # orbit (0) 
+           
+
+-- jungle breaks 1/2
+do
+  all $ id
+  all $ (# lpf ((8/8)*2000) )
+  hush
+  d1 $ loopAt 4 $ slice (16) ( fast (2) $ 
+     "[4] [5] [6] [7] [7] [6] [5] [4]" + "<8>") $ "midasTouch"
+        # n "<1>" # cut "-1" & speed (slow (4) $ "4@7 4.5"/8) 
+  	    # shape (5/8) & gain (10/8) # rel (5/8) 
+  d2 $ loopAt 4 
+     $ slice 32 ( fast 2 $ 
+        "[0] [1] [2] [0] [4*<1 2 2 3 [2 8] 2 1 1 3>] [0] [2] [7]\
+       \ [<0 7 0*2 [~ 0*<1 2>]>] [<[5*2] [~ 3]>] [6] [4 5] [<2 5 6 3>] [13] [2] [31*<2 3>]")$ "breakcore_160BPM:0"
+	    # n 56 # cut "-1" & gain (13/8)
+	      & speed (14/16) # krush (2) 
+               
+-- jungle breaks 2/2
+do
+  all $ linger ( slow (4) $ "3"/8) 
+  all $ id
+  all $ linger ( slow (4) $ "8@7 <3 1>"/8) 
+  hush
+  d1 $ loopAt 2 $ slice (16) ( fast (2) $ 
+     "[4] [5] [6] [7] [7] [6] [5] [4]" + "<8>") $ "midasTouch"
+        # n "<1>" # cut "-1" & speed (slow (4) $ "4@7 4.5"/8) 
+  	    # shape (5/8) & gain (15/8) # rel (5/8) 
+  d2 $ loopAt 4 
+     $ slice 32 ( fast 2 $ 
+        "[0] [1] [2] [0] [4*<1 2 2 3 [2 8] 2 1 1 3>] [0] [2] [7]\
+       \ [<0 7 0*2 [~ 0*<1 2>]>] [<[5*2] [~ 3]>] [6] [4 5] [<2 5 6 3>] [13] [2] [31*<2 3>]")
+         $ "breakcore_160BPM"
+	    # n 70 # cut "-1" & gain (16/8)
+	      & speed (15/16) # krush (4) # shape (3/8) 
+                # orbit (0) # accelerate (-3/8) 
+                 
+-- old daft punk interlude 1/1
+-- slowdown next
+do
+  all $ plysl (8)
+  all $ id
+  hush
+  d1 $ loopAt 2 $ slice (16) ( fast (2) $ 
+     " [[2] [3]]*4" + "<8>") $ "midasTouch"
+        # n "<5>" # cut "0" -- & speed ("<12 [12@3 [11 11.5]]>"/12) 
+	# rel (3/8) # shape (6/8) & gain (11/8) # lpf ((11/8)*2000) 
+  d2 $ loopAt 6 
+     $ slice 32 ( fast 4 $ 
+        "[[2] [6]]*4" + "8")$ "breakcore_160BPM"
+	    # n 93 # cut "-1" & gain (15/8)
+	      & speed (12/12) # krush (0)
+  d3 $ fast (4) $ n "4 0 3 <0!4 6>" # "ho"# cut (-1) 
+	& gain (7/8) # shape (4/8) & speed (4/8) # accelerate (-1/16) 
+          # rel (1/16) # room (2/8) # size (2/8) 
+               
+   
+-- slowdown transition 1/1
+do
+  -- bpm 100
+  all $ id
+  hush
+  d2 $ loopAt 4 
+     $ slice 32 ( fast (4) $ "[0 1 2 3] [4 5 6 7]" + "[0@3 2]")$ "breakcore_160BPM"
+	    # n 118 # cut "0" & gain (13/8) # rel (2/8) 
+	      & speed (12/12) # krush (1) # room (2/8) 
+  d1 $ slow (1) $ "dr:15(3,8)" & gain (16/8) # shape (0/8) & speed (8/8) 
+	  # rel (9/8)
+           
+
+-- slow and heavy 1/4
+let maskr = (& gain ( slow (2) $ "0 1@3 0 1@3")) .  discretize (4)
+in do
+  all $ plysl 2 .  ply (3)  . (# cut (1) )
+  all $ id
+  hush
+  d1 $ fast 2 $ maskr $ slow (2) $ "dr:24(3,8)" & gain (16/8) # shape (3/8) & speed (4/8) 
+  d3 $ fast 2 $ slow (2) $ "[808bd:0, ~ [808:2,dr:1]]" & gain (19/8) # shape (7/8) 
+              # rel (2/8) & speed (6/8) # room ("0 1"/16) 
+  d2 $ fast 2 $ maskr $ loopAt 8 
+     $ slice 32 ( fast (4) $ "[0 1 2 3] [4 5 6 7]" + "[0@3 2]")$ "breakcore_160BPM"
+	    # n 118 # cut "0" & gain (13/8) # rel (2/8) 
+	      & speed (12/12) # krush (1) # room (2/8) 
+                # distort (2/16) 
+               
+-- slow and heavy 2/4
+-- quicker up next
+let maskr = (& gain ( slow (1) $ "0 1@3 0 1@3")) .  discretize (8)
+in do
+  all $ id
+  hush
+  d1 $ maskr $ slow (1) $ n "15 ~ ~ 15 ~ ~ <15!3 14> ~" # "dr"
+              & gain (16/8) # shape (3/8) & speed (8/8) 
+                # room (2/8) 
+  d3 $ "808bd:4*<8 2!7> [808:2,dr:1]" & gain (19/8) # shape (7/8) # rel (3/8) 
+       # distort (1/8) # orbit (0) 
+  d2 $ fast ("<2!7 1.5> <4!3 [4 8]>") $ n "4 0 3 <0!4 6>" # "ho"# cut (-1) 
+	& gain (12/8) # shape (4/8) & speed (6/4) # accelerate (-8/16) 
+          # rel (2/16)  # lpf ((5/8)*2000) 
+   
+-- quicker and heavy 3/4
+let maskr = (& gain ( slow (1) $ "0 1@3 0 1@3")) .  discretize (8)
+in do
+  all $ inside 2 (iter (4))
+  all $ id
+  hush
+  d1 $ maskr $ slow (1) $ "dr:22(3,8)" & gain (16/8) # shape (3/8) & speed (8/8) 
+  d3 $ rarely (inside 2 ( iter (2) )) $ "[808bd:8(3,8), [~ 808:4] [dr:1*1]]" 
+            & gain (19/8) # shape (7/8) # rel (2/8) 
+  d2 $ loopAt 2 $ slice 32 
+     (fast (4) $ iter (4) $ "[0 1 2 3] [4 5 6 7]" + "[0@3 2]")$ "breakcore_160BPM"
+	    # n "118" # cut "0" & gain (13/8) # rel (2/8) 
+	      & speed (12/12) # krush (1) # room (2/8) 
+               
+-- quicker and heavy 4/4
+-- glitchy a lil
+-- steady up next
+let maskr = (& gain ( slow (1) $ "0 1@3 0 1@3")) .  discretize (8)
+in do
+  all $ (# hpf ((6/8)*2000) ) .  iter (4) 
+  all $ id
+  hush
+  d1 $ maskr $ slow (1) $ "dr:22(3,8)" & gain (16/8) # shape (3/8) & speed (8/8) 
+              # pan (rand) 
+  d3 $ rarely (inside 2 ( iter (2) )) $ "[808bd:0(3,8), [~ 808:4] [808sd:-1,dr:1]]" 
+        & gain (21/8) # shape (7/8) # rel (3/8) 
+  d2 $ loopAt 2 $ slice 32 
+     (fast (4) $ iter (4) $ "[0 1 2 3] [4 5 6 7]" + "[0@3 2]")$ "breakcore_160BPM"
+	    # n "118" # cut "0" & gain (13/8) # rel (2/8) 
+	      & speed (8/12) # krush (1) # room (2/8) 
+               
+-- mills bd transition 1/3
+let maskr = (& gain ( slow (2) "0 1@7 0 1@7"))
+    maskrlte = (& gain ( slow (2) "0 1@3 0 1@3"))
+in do
+  all $ id
+  hush
+  d1 $ juxBy 0.8 ( ply ("<3 2!7>") . (|+ n "<13 2 3 4 5>")) $ slow (4) $ plyWith (2) ( shiftBy ("[3 5]"/8)$ ) 
+        $ fast (2) $ iter (1) $ "dr:0([3],8)" & gain (16/8) & speed (8/8) 
+         # rel (1/8) # cut "0" & speed (3/2) # lpf ((16/8)*2000) 
+               # pan ("0 8"/8) 
+  d3 $ slow (1) $ "[808bd:7*2,~ [808sd:-1,dr:1]]" & gain (19/8) # shape (7/8) # rel (3/8) # orbit (0) 
+  d2 $ maskr $  discretize (8) $ loopAt 8 
+     $ slice 32 ( fast (8) $ "[0 1 2 3] [4 5 6 7]" + "[0@3 2]")$ "breakcore_160BPM"
+	    # n 118 # cut "0" & gain (13/8) # rel (2/8) 
+	      & speed (24/12) # krush (2) # room (2/8) 
+               
+-- mills bd transition 2/3
+let maskr = (& gain ( slow (2) "0 1@7 0 1@7"))
+    maskrlte = (& gain ( slow (2) "0 1@3 0 1@3"))
+in do
+  all $( linger (6/16) $  )
+  all $ id
+  hush
+  d3 $ "808bd:5*2" & gain (20/8) # shape (7/8) # rel (3/8) # orbit (0) # cut 1
+              # krush (14/8) # room (2/24) 
+  d2 $ maskr $ fast (1) $ iter (4) $ discretize (8)$ loopAt 8 
+     $ slice 32 ( fast (8) $ "[0 1 2 3] [4 5 6 7]" + "[0@3 2]")$ "breakcore_160BPM"
+	    # n 118 # cut "1" & gain (13/8) # rel (2/8) 
+	      & speed (24/12) # krush ( slow (8) $  range (2) (4) $ sine ) 
+		  # orbit 0
+                   
+-- mills set bd 3/3
+-- break section
+-- weird up next
+let maskr = (& gain ( slow (2) "0 1@7 0 1@7"))
+    maskrlte = (& gain ( slow (2) "0 1@3 0 1@3"))
+in do
+  all $ id
+  all $ (# hpf ((7/8)*2000) )
+  all $ linger ( iter (8) $ "[1 16@7]"/16) 
+  hush
+  d3 $ "808bd:12(3,8,0)" & gain (21/8) # shape (6/8) # rel (3/8) # orbit (0) # cut 1
+              # krush (16/8) 
+  d2 $ maskr $  discretize (8) $ loopAt 8 
+     $ slice 32 ( fast (8) $ "[0 1 2 3] [4 5 6 7]" + "[0@3 2]")$ "breakcore_160BPM"
+	    # n 120 # cut "0" & gain (16/8) # rel (2/8) 
+	      & speed (24/12) # krush (3) # room (2/8) # orbit 0
+  d1 $ discretize (8) $ loopAt 8 
+     $ jux (# hpf ((2/8)*2000))
+     $ slice 32 ( fast (8) $ "[0 1 2 3] [4 5 6 7]" + "[0@3 2]")$ "breakcore_160BPM"
+	    # n 118 # cut "0" & gain (13/8) # rel (2/8) # orbit 0
+                # pan 0.7
+	      & speed (16/12) # krush (3) # room (2/8) 
+               
+
+-- 808bd trap drums transition  1/1
+-- riff on it maybe
+let maskr = (& gain ( slow (2) "0 1@7 0 1@7"))
+    maskrlte = (& gain ( slow (2) "0 1@3 0 1@3"))
+in do
+  all $ chop ("<1 1 1 [1 2 3 4 4 4 4 3]>")
+  all $ id
+  hush
+  d3 $ slow (1) $ "[Tenkitsune_Kick:12 ~ dr:1 Tenkitsune_Kick:9 ~ dr:1 909:0 ~]" 
+        & gain (23/8) # shape (7/8) # rel (5/8) # orbit (0) # cut 1
+        # distort ("2 0"/8) 
+  d2 $ e 7 ( iter (4) . fast "1 1.5 1 0.75")
+     $ discretize ("{8!7 12 8!8 16}%<2 4>") $ loopAt 4 
+     $ often (# pan 0.1)
+     $ slice 32 ( inside 8 (iter 4 . rot 2) $ fast (8) $ 
+	  "[0 1 2 3] [4 5 6 7]" + "[0@3 2]" + "<0 8 12 24>")$ "breakcore_160BPM"
+	    # n "[118 20 118 119]*4" # cut "1" & gain (14/8) # rel (1/8) # pan "0.9"
+	      & speed (24/12) # room (2/8) # krush (2) # orbit (0) 
+               
+-- rave shitv2 1/1
+-- up next is heavy bd mosh
+let maskr = (& gain ( slow (2) "0 1@7 0 1@7"))
+    maskrlte = (& gain ( slow (2) "0 1@3 0 1@3"))
+in do
+  all $ id
+  hush
+  d3 $ slow (1) $ "[808bd:12 bottle:8 odx:3 808bd:5 bottle:3 odx:3 909:0 ~]" 
+        & gain (23/8) # shape (7/8) # rel (5/8) # orbit (0) # cut "-1"
+  d2 $ e 8 ( iter (4) . fast "1 1.5 1 0.75")
+     $ juxBy ( slow (8) $ tri) (# bpf ((12/8)*2000) )
+     $ slice 32 ( inside 4 (iter 4 . rot 2) $ fast (4) $ 
+	  "[0 1 2 3] [4 5 6 7]" + "[0@3 2]" + "<0 8 12 24>")$ "breakcore_160BPM"
+	    # n 132 # cut "0" & gain (14/8) # rel (1/8)  
+	      & speed (12/12) # krush (4) # room (2/8) 
+                # orbit ( slow (2) $ "1") # lpf ((7/8)*2000) 
+                 
+-- heavy bd mosh 1/4
+let maskr = (& gain ( slow (2) "0 1@7 0 1@7"))
+    maskrlte = (& gain ( slow (2) "0 1@3 0 1@3"))
+in do
+  all $ iter ("<1 2 4 8>") 
+  all $ id
+  hush
+  d3 $ "[808bd:12(3,8,<0 4>),[~@3 miniyeah:3] odx:12*1]" & gain (21/8) 
+	# shape (6/8) # rel (2/8) # orbit (0) # cut 1
+	      & speed ("8"/8) # accelerate (2/8) 
+  d1 $ "[dr55!4 ~ dr55!3 , ~ 808sd:1]" & gain (19/8) # shape (6/8) # rel (1/16) 
+	    & speed (10/16) # lpf ((6/8)*2000) 
+  d2 $ fast (2) $ discretize ("{4 <4 4 12> <4 4 4 16> 8}%3") $ loopAt 4 
+     $ juxBy ( slow (8) $ tri) (# bpf ((12/8)*2000) )
+     $ slice 32 ( inside 4 (iter 4 . rot 2) $ fast (4) $ 
+	  "[0 1 2 3] [4 5 6 7]" + "[0@3 2]" + "<0 8 12 24>")$ "breakcore_160BPM"
+	    # n 186 # cut "0" & gain (14/8) # rel (1/8)  
+	      & speed (12/12) # krush (1) # room (2/8) 
+               
+-- heavy bd mosh 2/4
+-- w/ verb
+let maskr = (& gain ( slow (2) "0 1@7 0 1@7"))
+    maskrlte = (& gain ( slow (2) "0 1@3 0 1@3"))
+in do
+  all $ id
+  hush
+  d3 $ slow (1) $ "[808bd:12(3,8,<0 4>),[dr:0!3 miniyeah:3] [procshort:1 clak:1!3 ]]" 
+	      & gain (12/8) # shape (7/8) # rel (2/8) # orbit (0) # cut 1
+	      & speed ("6"/8) # accelerate (4/8) # room (4/8) 
+  d2 $ while "<0!3 1>" (# n 1) $ iter (4) $ "808bd:9*8?" & gain (16/8) # orbit 0 
+  d1 $ n "1*<1!3 2> ~ ~ 6 ~ ~ 4 ~"# "[808sd]" & gain (19/8) # shape (6/8) # rel (1/16) 
+	    & speed (10/16) # lpf ((6/8)*2000) 
+
+-- heavy bd mosh 3/4
+-- verb again
+let maskr = (& gain ( slow (2) "0 1@7 0 1@7"))
+    maskrlte = (& gain ( slow (2) "0 1@3 0 1@3"))
+in do
+  all $ plysl (2) . ply 1
+  all $ id
+  hush
+  d2 $ while "<0!3 1>" (# n 1) $ iter (4) $ "808bd:13*8?" & gain (16/8) # orbit 0 
+           # room (3/8) # size (1/100) 
+  d3 $ superimpose ( slow (2) ) $ "[808bd:12 bottle:4 odx:3 808bd:5 ~ odx:3 909:0 ~]" 
+        & gain (23/8) # shape (7/8) # rel (5/8) # orbit (0) # cut "-1"
+           # room (1/8) # size (1/100) 
+         
+-- heavy bd mosh 4/4
+-- verb again
+let maskr = (& gain ( slow (2) "0 1@7 0 1@7"))
+    maskrlte = (& gain ( slow (2) "0 1@3 0 1@3"))
+in do
+  all $ ((# cut ("[<1> <1 0> 1 1]")) . plysl (2) . ply (2) )
+  all $ linger (3/8) 
+  all $ id
+  hush
+  d3 $ slow (1) $ "[808bd:12(3,8,<0 4>),[dr:0!3 miniyeah:3] [procshort:1 clak:1!3 ]]" 
+	      & gain (12/8) # shape (7/8) # rel (2/8) # orbit (0) # cut 1
+	      & speed ("6"/8) # accelerate (4/8) # room (4/8) 
+  d2 $ while "<0!3 1>" (# n 1) $ iter (4) $ "808bd:9*8?" & gain (16/8) # orbit 0 
+  d1 $ slow (1) $ "[808bd:12 bottle:4 odx:3 808bd:5 ~ odx:3 909:0 ~]" 
+        & gain (23/8) # shape (7/8) # rel (5/8) # orbit (0) # cut "-1"
+         
+-- crushed prelude
+let maskr = (& gain ( slow (2) "0 1@7 0 1@7"))
+    maskrlte = (& gain ( slow (2) "0 1@3 0 1@3"))
+in do
+  all $ id
+  hush
+  d1 $ jux (# waveloss (19)) $ slow 1 $ "[dr55!4 ~ dr55!7 , <~ 808sd:1>]" 
+          & gain (16/8) # shape (6/8) # rel (1/16) 
+           # lpf ((5/8)*2000) # pan ("0"/8) 
+  d2 $ loopAt 48 $ chop (64) $ "palmolive" & gain (11/8) 
+   
+-- crushed 1/4
+do
+  all $ id
+  hush
+  d1 $ slow (2) $ jux (slow ("<2!3 1>")) $ "[dr55!4 <~!2 dr:1> dr55!19 , ~ 808sd:1]" & gain (13/8) # shape (6/8) # rel (1/16) 
+	    # lpf ((24/8)*2000) # room ( slow (4) $ "7@7 1"/8) 
+  d2 $ mask "1@16 0 1@15" $ slow (2) $ "808bd:7(3,8,<0 2 3 4 4 3 7 9>)" 
+               & gain (19/8) # orbit 0
+	    # crush (3) # shape (6/8) # lpf ((16/8)*2000) # rel (8/8) 
+  d3 $ loopAt 48 $ chop (64) $ "palmolive" & gain (12/8) 
+        # cut (-1) # shape (2/8) 
+             
+-- crushed 2/3
+do
+  all $ id
+  hush
+  d1 $ slow (1) $ 
+        ("[<[bottle:1@7 print:9]!3 dr:12>!4 808:2 <~!2 dr:2> dr55:5!10 ,\
+                      \ <~!3 lighter:2*16?> 808sd:4]" 
+                      + "0")
+       & gain (13/8) # shape (6/8) # rel (7/16) 
+	& speed (5/8) # cut "[1@8] [0 0@7]" # lpf ((10/8)*2000) 
+	  # room (2/8) 
+  d2 $ while "<0!3 [0|1]*4>" (# n 7) $ mask "1@16 0 1@15" 
+     $ "future:8(3,8,<0 2 3 4 4 3 7 9>)" & gain (19/8) # orbit 0
+	    # crush (6) # shape (6/8) & speed (7/8) # rel (6/8)  # cut ( "[0@8] [1 0@7]" )
+	      -- # room (3/8) # size (6/8) 
+               
+-- crushed 3/3
+-- up next is hottest_party_2
+do
+  all $ eff_l . eff_s . eff_P . eff_f . id
+  all $ slow ("{1 2 1 2 2 3 1}%3") . chop (2)
+  all $ (# hpf ((8/8)*2000) )
+  all $ id 
+  hush
+  d1 $ fast ( iter (4) $ "1@3 2") $ sometimesBy 0.2 ( shiftBy (7/8) . slow (2) .  linger (3/8) ) $ "[<[print:0@7 print:9]!3 dr:12>!3 <~!2 dr:1> dr55:3!10 ,\
+                      \ <~!3 lighter:2*16?> dr:-26]" 
+       & gain (13/8) # shape (6/8) # rel (1/16) 
+	& speed (4/8) # cut "[1@8] [0 0@7]" # lpf ((10/8)*2000) 
+	  |+| n 13 # room (1/8) 
+  d3 $ fast (1) $ "~ 808sd:-1" & gain (16/8) # rel (1/8) # shape (7/8) # orbit (1) 
+  d2 $ fast (1) $ while "<0!3 [0|1]*4>" (# n 7) $ mask "1@16 0 1@15" 
+     $ "bd:8(3,8,<0 2 3 4 4 3 7 9>)" & gain (19/8) # orbit 0
+	    # shape (7/8) & speed (7/8) # rel (6/8)  # cut ( "[0@8] [1 0@7]" )
+	      # size (6/8) # cut "-1"
+  d5 $ loopAt (24*2) $  chop (4) $ chop (64) $ "palmolive" & gain (16/8) 
+        # cut (-1) # shape (2/8) # hpf ((4/8)*2000) 
+         
+                
+
+-- start of hottest_party_2
+-- lone intro 1/2
+do
+  hush
+  all $ id
+  d2 $ slow (1) $ "Tenkitsune_Kick:2(<1!3 [4 0]>,8)" 
+       # orbit (0) & gain (18/8) 
+	# shape (6/8) & speed (6/8) & speed (2/8) 
+	    # waveloss (11) # pan "<0 1>" # distort (4/8) 
+              # rel (11/8) 
+  d5 $ slice (64) "0*1" $ chop (4) $ "palmolive:1" & gain (11/8) 
+        # cut (-1) # shape (0/8) 
+              & speed (1.1) # sus (15/8) 
+             
+-- lone intro 2/2
+-- slow sample next
+do
+  hush
+  all $ id
+  d2 $ slow (2) $ "Tenkitsune_Kick(<1!3 [4 0]>,8)" 
+      # n "<3 2!3>" # orbit (0) & gain (16/8) 
+	# shape (5/8) & speed (6/8) & speed (2/8) 
+	    # waveloss (8) # pan 0 # rel (16/8) 
+  d3 $ slow (2) $ "~ Tenkitsune_Snare:2" & gain (14/8) 
+      # shape (4/8) # room (4/8) # size (1/16) 
+	# orbit (0) & speed (8/8) # pan 1
+  d5 $ slice (64) "4*8" $ "palmolive:1" & gain (11/8) 
+        # cut (-1) # shape (0/8) 
+              & speed (2) # sus (15/8) 
+         
+-- slow sample next 1/2
+-- speedup next
+do
+  hush
+  bpm 139k
+  all $ id
+  d1 $ loopAt 8 $ slice (32)  
+     ( fast (2) $ "16 1 1 1 5 2 5 <2 10>" + "<0>" ) 
+     $ "hottest_party_2" # cut "-1" & gain (12/8) 
+      # hpf ((8/8)*2000) 
+      # shape (3/8) & speed (4/8) 
+	# krush (8/8) 
+  d3 $ slow (2) $ "~ Tenkitsune_Snare:2" & gain (13/8) 
+      # shape (5/8) # orbit (0) # rel (1/8) 
+       
+-- speedup 2/2
+-- up next is the leadup to the dirtiest laundry in the file
+do
+  hush
+  bpm 140
+  all $ id
+  d1 $ mask ( slow (2) $ " 1@16 0 1@15") $ chop (8) $ loopAt 8 $ slice (32)  
+     ( fast (2) $ "16 1 1 1 5 2 5 <2 10>" + "<0>" ) 
+     $ "hottest_party_2" # cut "-1" & gain (12/8) 
+      # bpf ((8/8)*2000) 
+      # shape (6/8) & speed (4/8) 
+	# krush (16/8) 
+  d3 $ slow (2) $ "~ Tenkitsune_Snare:2" & gain (13/8) 
+      # shape (7/8) # orbit (0) # rel (1/8) 
+       
+-- laundry intro 1/1
+do
+  all $ id
+  hush
+  d1 $ loopAt 4 $ slice (64)  
+     ( fast (4) $ "[<0 -18>] [1] [2] [3] [-17] [5] [6] [7]" + "<0>" ) 
+     $ "hottest_party_2:7" # cut "-1" & gain (9/8) 
+      # shape (4/8) & speed (4/8) 
+	# krush (8) # waveloss (30) # room (3/8) -- # rel ("[<1 1 2 1 4 1 2 1> 6]*4"/16) 
+
+do
+  all $ id
+  hush
+  d1 $ loopAt 4 $ slice (64)  
+     ( fast (4) $ "[<0 -18>] [1] [2] [3] [-17] [5] [6] [7]" + "<0>" ) 
+     $ "hottest_party_2" # cut "-1" & gain (9/8) 
+      # n 7 # shape (4/8) & speed (4/8) 
+	# krush (8) # waveloss (30) # room (3/8) # rel ("[<1 1 2 1 4 1 2 1> 6]*4"/12) 
+  d2 $ linger (32/32) $ slow (2) $ "Tenkitsune_Kick:0(<3 [0@5 <4 4 8 [16@2 32]>@3] 3 [0 4 0 7]>,8)" 
+       # orbit (0) & gain (18/8)
+	# shape (6/8) & speed (5/8) 
+  d3 $ slow (2) $ "~ Tenkitsune_Snare:2" & gain (12/8) 
+      # shape (3/8) # room (2/8) # size (1/16) 
+	# orbit (0) # distort (4/8) 
+         
+-- laundry 2/6
+do
+  all $ eff_s . eff_s . eff_s . eff_s . eff_s . eff_l . id
+  all $ fast (2) . eff_s . eff_s . eff_s . eff_l .  ((# room (7/8) )) . (# size (7/8) ). id . (# lpf ((1/8)*2000) )
+  all $  ply (4)
+  all $ id
+  hush
+  d1 $ loopAt 8 $ slice (64)  
+     ( fast (4) $ "[<0 -18>] [1] [2] [3] [-17] [5] [6] [7]" + "<0>" ) 
+     $ "hottest_party_2" # cut "-1" & gain (9/8) 
+      # n 7 # hpf ((6/8)*2000) # shape (4/8) & speed (4/8) 
+	# krush (4) # waveloss (10) 
+  d2 $ slow (2) $ n "[1](<3 [0@5 <4 4 8 [16@2 32]>@3] 3 [4 0 0 7]>,8)" 
+        # "Tenkitsune_Kick"
+       # orbit (0) & gain (18/8)
+	# shape (6/8) & speed (5/8) 
+  d3 $ slow (2) $ "~ Tenkitsune_Snare:2" & gain (12/8) 
+      # shape (4/8) # room (2/8) # size (1/16) 
+	# orbit (0) # distort (4/8) 
+         
+-- triplet kick fill
+do
+  all $ id
+  hush
+  d6 $ slow (2) $ n "[4]*24" 
+        # "Tenkitsune_Kick"
+       # orbit (0) & gain (18/8)
+	# shape (6/8) & speed (5/8) 
+         
+-- laundry 3/6
+do
+  all $ jux ((# hpf ((1/8)*2000) ) . (# rel (1/16)).(# cut (0) ))
+  all $ id
+  hush
+  d1 $ loopAt 8 $ chop (4) $  slice (64)  
+     ( fast (4) $ "[<0 -18>] [1] [2] [3] [-17] [5] [6] [7]" + "<0>" ) 
+     $ "hottest_party_2" # cut "-1" & gain (9/8) 
+      # n 7 # shape (4/8) & speed (4/8) 
+	# krush (4) # waveloss (40) 
+  d2 $ slow (2) $ n "[2,4](<3 [0@5 <4 4 8 [16@2 32]>@3] 3 [4 0 0 7]>,8)" 
+        # "Tenkitsune_Kick"
+       # orbit (0) & gain (20/8)
+	# shape (2/8) & speed (5/8) 
+  d3 $ slow (2) $ "~ Tenkitsune_Snare:2" & gain (12/8) 
+      # shape (4/8) # room (2/8) # size (1/16) 
+	# orbit (0) # distort (4/8) 
+         
+-- laundry 4/6
+ -- intermiss
+do
+  all $ id
+  hush
+  d1 $ loopAt 4 $ slice (64)  
+     ( fast (4) $ "[<-18>] [1] [2] [3] [-17] [5] [6] [7]" + "<0>" ) 
+     $ "hottest_party_2" # cut "-1" & gain (9/8) 
+      # n ( fast (2) $ "13 6@2 1")
+      # shape (6/8) & speed (5/8) 
+	# hpf ((3/8)*2000) 
+         
+-- laundry 5/6
+-- hitter
+do
+  all $ id
+  hush
+  d1 $ loopAt 4 $ slice (64)  
+     ( fast (4) $ "[<-17 -18>] [1] [2] [3] [-17] [5] [6] [7]" + "<0>" ) 
+     $ "hottest_party_2:7" # cut "-1" & gain (9/8) 
+      # shape (6/8) & speed (4/8) 
+  d2 $ slow (1) $ n "[-2,-1](<3 2>,8,<0 3>)" 
+       # "Tenkitsune_Kick"
+       # orbit (0) & gain (20/8)
+	# shape (6/8) & speed (6/8) 
+         
+-- laundry 6/6
+-- enda
+do
+  all $ iter (2) . linger (6/16) 
+  all $ id
+  hush
+  d1 $ loopAt 4 $ slice (64)  
+     ( fast (4) $ "[<-18>] [1] [2] [3] [-17] [5] [6] [6]" + "<0>" ) 
+     $ "hottest_party_2:7" # cut "-1" & gain (11/8) 
+      # shape (6/8) & speed (3/8) # rel (1/8) 
+  d2 $ slow (1) $ n "[2,4](<3 2>,8,<0 3>)" 
+        # "Tenkitsune_Kick"
+       # orbit (0) & gain (20/8)
+	# shape (4/8) & speed (5/8) 
+  d3 $ slow (1) $ "~ Tenkitsune_Snare:2" & gain (12/8) 
+      # shape (6/8) # orbit (0) # distort (6/8) & speed (8/8) 
+       
+-- laundry w/ hurry variation sounds nice
+let h = hurry ("<2 1 1 1 1 [1@3 0.5] 1 1 1 1 [1 2] 1 1 1 1 [1@3 3] 1>"/2)
+in do
+  all $ linger (1/8)
+  all $ id
+  hush
+  d1 $ h $ loopAt 4 $ slice (64)  
+     ( fast (4) $ "[<-18>] [1] [2] [3] [-17] [5] [6] [6]" + "<0>" ) 
+     $ "hottest_party_2:7" # cut "-1" & gain (16/8) 
+      # shape (4/8) & speed (3/8) # rel (1/8) 
+  d2 $ h $ slow (1) $ n "[2,4](<3 2>,8,<0 3>)" 
+        # "Tenkitsune_Kick"
+       # orbit (0) & gain (20/8)
+	# shape (4/8) & speed (5/8) 
+  d3 $ h $ slow (1) $ "~ Tenkitsune_Snare:2" & gain (12/8) 
+      # shape (6/8) # orbit (0) # distort (6/8) & speed (12/8) 
+  d4 $ fast (1) $ while "<0!3 [0 1]>" ( fast ("1@3 1.5")) $ fast (2) $ n "2 0 0 0" # "808oh"
+      # cut (-1) & gain (12/8) # shape (2/8) & speed (4/8) # accelerate (8/16) 
+        # rel (1/16) 
+       
+-- weeooweeoo
+-- RAVE ALERT
+do
+  hush
+  all $ linger (1/8) .  slow (2)
+  all $ id
+  d3 $ loopAt 2 $ chop (8) $ slice (4) 
+     ( slow (8) $ "[[0] [1] [2] [2] 2!27 3*<1 2>]" )
+     $ "hottest_party_2" # cut "-1" & gain (11/8) 
+       # n 3 & speed ("[8]"/8) # orbit (0) # shape (2/8)
+        # lpf ((25/8)*2000) 
+        
+-- hard breaks on venus 1/2
+do
+  hush
+  all $ id
+  all $ chop (2) 
+  d3 $ loopAt "<1 2@7>" $  chop (2) $ slice (4) 
+     ( slow (8) $ "[[0] [1] [2] [2] 2!27 3*<1 2>]" )
+     $ "hottest_party_2" # cut "-1" & gain (13/8) 
+     # n (2) & speed ("[8]"/8) # orbit (0) # shape (2/8) # lpf ((24/8)*2000) 
+      -- n 1 sounds good too
+  d1 $ fast (2) $ loopAt 8 $ chop (2)
+     $ slice 32 
+      ( fast 2 $ often (discretize (8)) $ rarely (+("-2")) $
+	"<[[0]*1 [0] [2] [<3>] [3] [5] [6] [7 <~ 0>]] \
+	 \[[0 1]*1 [1 11] [2] [<3>] [3] [5] [<6 5>] [7 <~ 0>]] \
+         \[[-4]*<1 2> [0] [2] [<3>] [3] [5] [6] [7 <~ 0>]] \
+         \[[0 1]*1 [2] [2] [<3>] [15] [0] [18 17] [19 <~ 12>]*1] >") 
+        $ "breakcore_160BPM"
+	# n ("[81|81|81|81|81|7]*4") # shape (3/8) 
+	# cut "-1" & gain (17/8) 
+	& speed (16/16) # krush (7) # orbit (0) # rel (1/8) 
+         
+-- hard breaks on venus 2/2
+do
+  hush
+  all $ id
+  d3 $ loopAt 2 $ slice (4) 
+     (  ply ("1") $ slow (4) $ "[[0] [1] [2] [2] 2!27 3*<1 2>]" )
+     $ "hottest_party_2" # cut "-1" & gain (11/8) 
+      # n "16" & speed ( slow (8) $ range (1/2) 1 $ isaw) 
+        # shape (4/8)  # orbit (0) 
+          & speed (16/8) # room (2/8) 
+  d1 $ fast (2) $ loopAt 8 $ chop (2)
+     $ slice 32 
+      ( fast 2 $ rarely (+("-2")) $
+	"<[[0]*1 [0] [2] [<3>] [3] [5] [6] [7 <~ 0>]] \
+	 \[[0 1]*1 [1 11] [2] [<3>] [3] [5] [<6 5>] [7 <~ 0>]] \
+         \[[-4]*<1 2> [0] [2] [<3>] [3] [5] [6] [7 <~ 0>]] \
+         \[[0 1]*1 [2] [2] [<3>] [15] [0] [18 17] [19 <~ 12>]*2] >") 
+        $ "breakcore_160BPM"
+	# n ("[81|81|81|81|81|7]*4") # shape (1/8) 
+	# cut "-1" & gain (15/8) 
+	& speed (11/8) # krush (7) # orbit (0) 
+         
+-- transitional (STOPS EVERYTHING)
+-- trap i_heap 1/6 (smooth vocals)
+do
+  hush
+  all $ id
+  d2 $ slow (2) $ n "[22](<3 [0@3 8]>,8)" 
+      # "Tenkitsune_Kick"
+       # orbit (0) & gain (16/8)
+	# shape (4/8) & speed (8/8) 
+  d1 $ jux (# waveloss (8) )
+     $ slow (2) $ n "~ [2 0*<0!3 1 0!3 6> ]" 
+        # "Tenkitsune_Snare@3 808oh" # rel (2/8) 
+        # shape (3/8) & gain 2 # room (2/8) 
+  d3 $ superimpose ((& speed (3.9/8)). (# rel (8/8)).(# lpf ((6/8)*2000) ))
+     $ loopAt 8 $ chop (8) $ slice (16) 
+     ( fast (2) $ "[~!6 <~ 1*2> <~ 13*2>]" + "0")
+     $ "hottest_party_2" # cut "0" & gain (11/8) 
+	 # n (19) # accelerate ("-1@3 -0.25"/24) # rel (10/8) 
+       & speed ("[8]"/8) # orbit (0) # shape (2/8) 
+  -- d1 $ "808bd*2" & gain (16/8) 
+  d2 $  chop (4) $ loopAt 32 $ chop (32) $ "stand_up_tall"
+            & gain (11/8) # crush (5) # shape (2/8) 
+
+-- transitional
+-- trap i_heap 2/6
+do
+  hush
+  all $ id
+  d2 $ slow (2) $ n "[22](<3 [0@3 8]>,8)" 
+      # "Tenkitsune_Kick"
+       # orbit (0) & gain (16/8)
+	# shape (4/8) & speed (8/8) 
+  d1 $ jux (# waveloss (8) )
+     $ slow (2) $ n "~ [2 0*<0!3 1 0!3 6> ]" 
+        # "Tenkitsune_Snare@3 808oh" # rel (2/8) 
+        # shape (3/8) & gain 2 # room ("<0 [0 2] 0 0>"/8) 
+  d3 $ superimpose ((& speed (3.9/8)). (# rel (8/8)).(# lpf ((6/8)*2000) ))
+     $ loopAt 8 $ slice (16) 
+     ( fast (2) $ "[~ ~ ~ [6 ~] ~ ~ ~ 8]" + "0")
+     $ "hottest_party_2" # cut "0" & gain (11/8) 
+	 # n ("[18@3 [18,4]]") # accelerate ("-1@3 -0.25"/24) # rel (10/8) 
+       & speed ("[8]"/8) # orbit (0) # shape (2/8) 
+  d4 $ slow (2) $ while "<0!3 [0 1]>" ( fast ("1@3 1.5")) $ fast (2) $ n "2 0 0 0" # "808oh"
+      # cut (-1) & gain (12/8) # shape (1/8) & speed (8/8) # accelerate (-1/16) 
+        # lpf ((11/8)*2000) 
+
+  d5 $ loopAt 32 $ chop (64) $ "stand_up_tall"
+            & gain (11/8) # crush (4) # shape (3/8) 
+              # lpf ((9/8)*2000) 
+       
+-- trap i_heap 3/6
+do
+  all $ id
+  hush
+  d3 $ chop (2) $ superimpose ((& speed (3.9/8)). (# rel (8/8)).(# lpf ((6/8)*2000) ))
+     $ loopAt 8 $ chop (1) $ slice (16) 
+     ( fast (2) $ "[8*1 8*1]*4" + "0")
+     $ "hottest_party_2" # cut "0" & gain (11/8) 
+	 # n (18) # accelerate ("-1@3 -0.25"/24) # rel (4/8) 
+       & speed ("[8]"/8) # orbit (0) # shape (2/8) # att (1/24) 
+  d2 $ slow (2) $ n "[26](<3 [0@3 8]>,8)" 
+      # "Tenkitsune_Kick"
+       # orbit (0) & gain (16/8) # room (1/8) 
+	# shape (4/8) & speed (8/8) 
+  d1 $ jux (# waveloss (8) )
+     $ slow (2) $ n "~ [2 <7 [2*2 2]!3>*<0 1> 2*<0!3 1> ~ ]" 
+        # "Tenkitsune_Snare" # rel (2/8) 
+        # shape (3/8) & gain 2 
+         
+-- trap i_heap 4/6
+do
+  all $ id
+  hush
+  d3 $ loopAt 8 $ slice (16) 
+     ( fast (2) $ "[8*1 8*<1!3 [1 4]>]*4" + "0")
+     $ "hottest_party_2:18" # cut "0" & gain (10/8) 
+	# accelerate ("-1@3 -3"/24) # rel (14/8) 
+       & speed ("[8]"/8) # orbit (0) # shape (2/8) 
+	  # cut (-1) 
+  d2 $ slow (1) $ n "[26](<3 [0@3 8]>,8)" 
+      # "Tenkitsune_Kick"
+       # orbit (0) & gain (16/8)
+	# shape (6/8) & speed (8/8) 
+  d1 $ jux (# waveloss (16) )
+     $ slow (2) $ n "~ [2 <7 4*2!3>*<0 1 0 2> 2*<0!3 1> ~ ]" 
+        # "Tenkitsune_Snare" # rel (2/8) 
+        # shape (7/8) & gain 2 
+  d4 $ loopAt 32 $ chop (64) $ "stand_up_tall:2"
+            & gain (11/8) # shape (3/8) 
+              # hpf ((2/8)*2000) 
+               
+-- trap i_heap 5/6
+-- tight as fuck
+do
+  all $ id
+  hush
+  d3 $ (& speed 
+        ( slow (8) $ 
+	  "[<8 [7 7.2 7.4 7.6 8@12] 8 [8 8.2 8 7.8 8@4]> 8 \ 
+	  \ [16@3 12@3 12.75@2] [<[12.6@3 8.2] [12.6@2 9 7]>]]"/8))
+     $ (# n ("[18]")) $ (# accelerate ( slow (8) $ "-1@3 -0.25"/8) )
+     $ superimpose ( fast (2) . (& speed (3.9/8)). (# rel (2/8)).(# lpf ((6/8)*2000)).(# cut 0))
+     $ loopAt 8 $ slice (16) 
+     ( fast (2) $ "[8 7 8 6]*4" + "0")
+     $ "hottest_party_2" # cut "-1" & gain (11/8) 
+	# rel (3/8) # orbit (0) # shape (2/8) & speed (8/8) 
+  d4 $ slow (2) $ n "[26](<3 [0@3 8]>,8)" 
+      # "Tenkitsune_Kick"
+       # orbit (0) & gain (16/8)
+	# shape (4/8) & speed (8/8) 
+  d1 $ jux (# waveloss (8) )
+     $ slow (2) $ n "~ [2 <7 [2*2 2]!3>*<0!3 1> 2*<0!3 1> ~ ]" 
+        # "Tenkitsune_Snare" # rel (2/8) 
+        # shape (3/8) & gain 2 
+  d2 $ ply ("1 2") $ loopAt 16 $ slice 64
+      ( fast (8) $ "[0 1*<1!15 8>]*4" + "<0>") $ "stand_up_tall:1"
+            & gain (11/8) # shape (3/8) 
+              # hpf ((4/8)*2000) & speed (8/8) # cut (-1) 
+         
+-- trap i_heap 6/6
+-- tight as fuck
+-- next is a variation w/ different melody
+do
+  hush
+  all $ linger (4/16) 
+  all $ id
+  d3 $ (& speed ( slow (8) $ 
+	  "[<8 [7 7.2 7.4 7.6 8@12] 8 [8 8.2 8 7.8 8@4]> 8 \ 
+	  \ [16@3 12@3 12.75@2] [<[12.6@3 8.2] [12.6@2 9 7]>]]"/8))
+     $ (# accelerate ( slow (8) $ "-1@3 -0.25"/8) )
+     $ superimpose ( fast (2) . (& speed (3.9/8)). (# rel (2/8)).(# lpf ((6/8)*2000)).(# cut 0))
+     $ loopAt 8 $ slice (16) 
+     ( fast (2) $ "[8 7 8 6]*4" + "0")
+     $ "hottest_party_2:18" # cut "-1" & gain (10/8) 
+	# rel (1/16) # orbit (0) # shape (2/8) 
+  d2 $ degradeBy ("2 1 1 2"/6) $ slow (1) $ n 
+       "[-6](<[<0 4> <<4 8 4>!3 12> 3 3] [0@3 8] [3 [4|5]] [0@3 4]>,8)" 
+      # "Tenkitsune_Kick"
+       # orbit (0) & gain (16/8)
+	# shape (4/8) & speed (5/4) 
+  d1 $ jux (# waveloss (8) )
+     $ slow (2) $ n "~ [~ 4*1] [2 <[2*2 2]!3>*<0!7 1> 2*<0!3 1> ~ ]@2" 
+        # "808oh Tenkitsune_Snare" # rel ("3 1"/16) 
+        # shape (3/8) & gain 2
+
+-- tight as fuck
+-- trap i_heap_alt
+let li = linger (16/16) 
+in do
+  hush
+  all $ id
+  d3 $ li $ (& speed ( slow (8) $ 
+	  "[<9 [8 8.2 8.4 8.6 9@12] 9 [9 9.2 9 10 9@4]> 9 \ 
+	  \ [15@1 11@5 10.75@2] [<[10.6@3 9.2] [7@2 4.5 [5 6]]>]]"/8))
+     $ (# accelerate ( slow (8) $ "-1@3 -0.25"/16) )
+     $ superimpose ( fast (2) . (& speed (3.9/8)). (# rel (2/8)).(# lpf ((6/8)*2000)).(# cut 0))
+     $ loopAt 8 $ slice (16) 
+     ( fast (2) $ "[8 7 8 6]*4" + "0")
+     $ "hottest_party_2" # cut "1 -1" & gain (10/8) 
+	# n 19 # rel (1/16) # orbit (0) # shape (2/8) 
+  d4 $ li $ degradeBy ("2 1 1 2"/6) $ slow (1) $ n "[-6](<[<0 4> <<4 8 4>!3 12> 3 3] [0@3 8] [3 [4|5]] [0@3 4]>,8)" 
+      # "Tenkitsune_Kick"
+       # orbit (0) & gain (16/8)
+	# shape (4/8) & speed (5/4) 
+  d1 $ li $ jux (# waveloss (8) )
+      $ (# room ("[0 2]*2"/8))
+     $ slow (2) $ n "~ [~ 3*1] [2 <[2*2 2]!3>*<0!7 1> 2*<0!3 1> ~ ]@2" 
+        # "808oh Tenkitsune_Snare" # rel ("4 1"/16) 
+        # shape (3/8) & gain 2 # cut "1 0"
+  d2 $ loopAt 32 $ chop (2) $  slice 64
+      ( fast (8) $ "[0] [1] [2] [3] [4] [5] [6] [7]" + "<0 8 16 24>") 
+            $ "stand_up_tall:4"
+            & gain (11/8) # shape (4/8) 
+              # hpf ((4/8)*2000) # cut (-1) 
+         
+-- tiptoes 1/1
+-- '..... DA' type beat
+-- fucking weird now lmao
+do
+  all $ id
+  hush
+  d3 $ loopAt 4 $ plyWith (2) ((# lpf (((rand))*2000) )) $ slice (16) 
+     (fast (4*2) $ swingBy (1/8) 2 $ "[8*<2 1!14 2 1!16> 7 <9> 6]" + "0")
+     $ "hottest_party_2" # cut "-1" & gain (10/8) 
+      # n 11 # rel (fast (4) $ iter (8) $ "1!7 2"/8) # orbit (0) # shape (4/8) 
+  d4 $ slow (1) $ n "[11](<2 [0@3 8] [2 [4|5]] [0@3 4]>,8)" 
+      # "Tenkitsune_Kick"
+       # orbit (0) & gain (16/8) # rel (3/8) 
+	# shape (4/8) # up (-3) 
+  d1 $ jux (# waveloss (8) )
+     $ slow (2) $ n "~ [~ 2] [2 <[2*2 2]!3>*<0!7 1> 2*<0!3 1> ~ ]@2" 
+        # "h Tenkitsune_Snare" # rel ("3 1"/16) 
+        # shape (3/8) & gain 2 
+  d2 $ loopAt 64 $ slice 64
+      ( fast (8) $ "[0] [1] [2] [3] [4] [5] [6] [7]" + "<24>") 
+            $ "stand_up_tall:3"
+            & gain (11/8) # shape (3/8) 
+              # cut (-1) 
+         
+         
+-- [bd ~ hh ~ hh] type beat
+do
+  all $ id
+  hush
+  d3 $ loopAt 8 $ plyWith (3) (& speed (9/8) )$ slice (16) 
+     (fast (4*2) $ swingBy (1/8) 2 $ "[8*<2 1!14 2 1!16> 7 <9> 6]" + "0")
+     $ "hottest_party_2" # cut "-1" & gain (10/8) 
+	 # n 4 # accelerate ("2@7 8"/24) 
+	# rel (3/24) # orbit (0) # shape (2/8) 
+  d2 $ slow (1) $ n "[9](<2 [0@3 8] [2 [4|5]] [0@3 4]>,8)" 
+      # "Tenkitsune_Kick"
+       # orbit (0) & gain (16/8) # rel (4/8) 
+	# shape (4/8) # up (-3) 
+  d1 $ jux (# waveloss (8) )
+     $ slow (2) $ n "~ [~ 2*<1!3 2>] [11 <[11*2 11]!3>*<0!7 1> 2*<0!3 1> ~ ]@2" 
+        # "h Tenkitsune_Snare" # rel ("3 1"/16) # cut "-1"
+        # shape (4/8) & gain 2 
+  d4 $ fast (2) $ swingBy (1/6) 2 $ n "[ ~ [1 ~ 3 ~]]" # "ho" & gain (16/8) 
+	    # rel (1/12) 
+         
+-- 80s anamatronic drum solo
+do
+  all $ id
+  hush
+  d1 $ fast (1) $ chop (2) $ loopAt 8 $ chop ("[2|2|2|2|4]*8")
+     $ slice 32 
+      ( fast 2 $ linger ( iter (2) $ "3 5 <1 3> 8"/16) $ 
+	"<  [[0] [1] [2] [3] [4] [2] [~] [7]] \
+	  \ [[0] [1] [2] [3] [4] [2] [4] [7]] \
+	  \ [[0] [1] [2] [3] [4] [2] [1 0] [6]] \
+	  \ [[1] [0] [2] [3] [<4 0>] [<4 1*3>] [<4 [1 0]>] [7]] >" + 0) 
+        $ "breakcore_160BPM"
+	# n ("[22]*4") # room (2/8) # size (4/8) 
+	# cut "-1" & gain (15/8) # rel (2/8) 
+	& speed (8/8) # krush (3) # orbit (0) 
+         
+-- tight as fuck
+do
+  all $ id
+  hush
+  d1 $ fast (2) $ loopAt 8 $ chop (2)
+     $ slice 32 
+      ( fast 2 $ linger ( iter (2) $ "3 5 <1 3> 8"/16) $ 
+	"<  [[0] [1] [2] [3] [4] [2] [~] [7]] \
+	  \ [[0] [1] [2] [3] [4] [2] [4] [7]] \
+	  \ [[0] [1] [2] [3] [4] [2] [1 0] [6]] \
+	  \ [[1] [0] [2] [3] [<4 0>] [<4 1*3>] [<4 [1 0]>] [7]] >" + 0) 
+        $ "breakcore_160BPM"
+	# n ("[20]*4") 
+	# cut "-1" & gain (15/8) # rel (2/8) 
+	& speed (8/8) # krush (3) # orbit (0) # room (2/8) 
+          # lpf ((2/8)*2000) 
+  d3 $ loopAt 16 $ slice (32) 
+     (fast (4) $ ply (4) $ linger (2/8) $ "[0] [1] [2*<1!7 2>] [3] [4] [5] [6] [7]" + "<0 8 16 24>")
+     $ "hottest_party_2" # cut "-1" & gain (13/8) 
+      # n 2
+	# orbit (0) # shape (4/8) # rel (1/8) 
+	  & speed (8/8) # cut 2
+           
+-- tight as fuck
+do
+  all $ id
+  hush
+  d1 $ fast (2) $ loopAt 8 $ chop (2)
+     $ slice 32 
+      ( fast 2 $ linger ( iter (2) $ "3 5 <1 3> 8"/16) $ 
+	"<  [[0] [1] [2] [3] [4] [2] [~] [7]] \
+	  \ [[0] [1] [2] [3] [4] [2] [4] [7]] \
+	  \ [[0] [1] [2] [3] [4] [2] [1 0] [6]] \
+	  \ [[1] [0] [2] [3] [<4 0>] [<4 1*3>] [<4 [1 0]>] [7]] >" + 0) 
+        $ "breakcore_160BPM"
+	# n ("[39]") 
+	# cut "-1" & gain (17/8) # rel (2/8) 
+	& speed (8/8) # krush (4) # orbit (0) 
+  d3 $ loopAt 16 $ plysl ("[4@7 3]*8") $ slice (32) 
+     (rev $ fast (16) $ "[0] [1] [2*<1!7 2>] [3] [4] [5] [6] [7]" + "<0 8 16 24>")
+     $ "hottest_party_2:22" # cut "-1" & gain (13/8) 
+	# orbit (0) # shape (4/8) # rel (1/8) 
+	  & speed (8/8) # cut 2
+  d2 $ slow (2) $ "~ ~ Tenkitsune_Snare:9 ~ ~ Tenkitsune_Snare:9 ~ ~" 
+     & gain (14/8) # shape (7/8) # orbit (1) # distort (3/8) 
+        & speed (6/8) # room (1/16) # size (1/16) 
+      
+bpm 140 
+-- optional
+
+-- halflife 1 k-hole
+do
+  hush
+  d1 $ chop (4) $  slow (32) $ n (run 16 ) # "alphabet" # distort (0/8) & gain (16/8) 
+          # room (7/8) # size (7/8) & speed (4/8) # cut (1) 
+	    # lpf ((2/8)*2000) 
+
+                 
+-- make this a shit transition
+-- y'allready know
+do
+  hush
+  all $ id
+  all $ linger (1/24)
+  d3 $ often (shiftBy ("[-2|-1|5]"/8)) $ inside 8 (iter (4)) $ chop (4) $ loopAt 8 $ slice (4) 
+     ( slow (4) $ "[[0] [1] [2] [2] 2!27 3*<1 2>]" )
+     $ "hottest_party_2" # cut "-1" & gain (11/8) 
+        # n 11 & speed ("[16]"/8) # orbit (0) # shape (2/8) 
+          # hpf ((3/8)*2000) 
+        
+        
+d1 $ "808bd:14(<2 3>,8,0)" 
+    & gain (12/8) # shape (6/8) 
+      # waveloss (24) 
+
+-- pretty cool 1/6
+do
+  hush
+  all $ id
+  d1 $ shiftBy (1) $ plyWith "<4 8>" (( shiftBy (3/8) . (& speed (6/8) ) )) 
+       $ (# n "[14]" )
+       $ "SFX" & gain (16/8) 
+	& speed (16/8) # cut (-1) -- # room (4/8) 
+	# lpf ((8/8)*2000) # room (1/16) 
+  d2 $ jux ((& speed (6/8) )) $ slow (2) $ "Tenkitsune_Kick:0(<3 [4 0]>,8)" 
+       # orbit (0) & gain (16/8) 
+	# shape (6/8) & speed (6/8) & speed (6/8) 
+	    # waveloss (4) # pan 0.2
+  d3 $ shiftBy (1) $ slow (2) $ n "2 [~ 3] [~ 5] ~" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) -- # room (2/8) # size (1/16) 
+	# orbit (0) # distort (0/8) & speed (12/16) 
+	  # rel (1/8) 
+           
+-- pretty cool 2/6
+do
+  all $ id
+  hush
+  d1 $ plyWith "<4 8>" (( shiftBy (5/8) . (& speed (6/8) ) )) 
+       $ (# n "[14]" )
+       $ "SFX" & gain (16/8) 
+	& speed (14/8) # cut (-1) -- # room (4/8) 
+	# lpf ((9/8)*2000)   
+  d2 $ jux (# hpf ((4/8)*2000) ) $ slow (2) $ "Tenkitsune_Kick:0(<3 [4 0]>,8)" 
+       # orbit (0) & gain (14/8) 
+	# shape (5/8) & speed (6/8) & speed (4/8) 
+	    # waveloss (8) # pan 0
+  d3 $ shiftBy (1) $ slow (2) $ n "~ 2 [~ 3] [~ 5]" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) -- # room (2/8) # size (1/16) 
+	# orbit (0) # distort (0/8) & speed (12/16) 
+	  # rel (1/8) 
+           
+-- pretty cool 3/6
+ -- fav.
+let fltr = 18
+in do
+  hush
+  all $ m (iter 4 "1(11,16)") 
+  all $ id
+  d1 $ plyWith "<4 8>" (( shiftBy (1/8) . (& speed (6/8) ) )) 
+       $ (# n "[14]" )
+       $ "SFX" & gain (16/8) 
+	& speed (11/8) # cut (-1) -- # room (4/8) 
+	# lpf ((fltr/8)*2000)   
+  d2 $ slow (2) $ "Tenkitsune_Kick:0(<3 [4 0]>,8,4)" 
+       # orbit (0) & gain (14/8) 
+	# shape (5/8) & speed (6/8) & speed (4/8) 
+	    # waveloss (8) # lpf ((fltr/8)*2000) 
+  d3 $ shiftBy (1) $ slow (2) $ n "2*[<1!3 6 5 1 2 1> 2] [~ 3] [~ 5] ~" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) -- # room (2/8) # size (1/16) 
+	# orbit (0) # distort (0/8) & speed (12/16) 
+	  # rel (2/8) # lpf ((fltr/8)*2000) 
+  d4 $ loopAt 32 $ chop (8) $ slice (64) 
+          ( fast (8) $ "0 1 2 3 4 5 6 7" + "<0 8 16 24 32 40 48 56>") $ "fafo:0" 
+                # cut (1) # shape (4/8) & gain (14/8) 
+                   # hpf ((1/8)*2000) # orbit (0) & speed (6/8) 
+           
+-- pretty cool interlude 1/3
+do
+  hush
+  all $ id
+  all $ linger (3/8)
+  d1 $ fast (2) $ loopAt 8 $ chop 2
+     $ slice 32 
+      ( fast 2 $ rarely (+("-2")) $
+	"<[[0]*1 [0] [2] [<3>] [3] [5] [6] [7 <~ 0>]] \
+	 \[[0 1]*1 [1 11] [2] [<3>] [3] [5] [<6 5>] [7 <~ 0>]] \
+         \[[-4]*<1 2> [0] [2] [<3>] [3] [5] [6] [7 <~ 0>]] \
+         \[[0 1]*1 [2] [2] [<3>] [15] [0] [18 17] [19 <~ 12>]*2] >") 
+        $ "breakcore_160BPM"
+	# n ("[139]") 
+	# shape (1/8) 
+	# cut "-1"
+	& gain (15/8) 
+	& speed (16/16) 
+	# krush (6) 
+	# orbit (0) 
+	# hpf ((5/8)*2000) 
+         
+-- pretty cool interlude 2/3
+do
+  all $ id
+  all $ linger (10/16) 
+  hush
+  d3 $ loopAt 8 $ chop (2) $ slice (16) 
+     (fast (2) $ "[12*<3!7 8> 14 8*2 9*2]*2" + "0")
+     $ "hottest_party_2" # cut "-1" & gain (11/8) 
+	# n 16 # accelerate ("-20"/24) 
+       & speed ("[23]"/8) # orbit (0) # shape (3/8) 
+	    # lpf ((2/16)*2000) 
+             
+-- pretty cool interlude 3/3
+do
+  hush
+  all $ id
+  d1 $ fast (2) $ loopAt 8 $ chop 2
+     $ slice 32 
+      ( fast 2 $ rarely (+("-2")) $
+	"<[[0]*1 [0] [2] [<3>] [3] [5] [6] [7 <~ 0>]] \
+	 \[[0 1]*1 [1 11] [2] [<3>] [3] [5] [<6 5>] [7 <~ 0>]] \
+         \[[-4]*<1 2> [0] [2] [<3>] [3] [5] [6] [7 <~ 0>]] \
+         \[[0 1]*1 [2] [2] [<3>] [15] [0] [18 17] [19 <~ 12>]*2] >") 
+        $ "breakcore_160BPM"
+	# n ("[143]") 
+	# shape (1/8) 
+	# cut "-1"
+	& gain (15/8) 
+	& speed (16/16) 
+	# krush (2) 
+	# orbit (0) 
+	# lpf ((5/8)*2000) 
+         
+-- pretty cool 4/6
+do
+  hush
+  all $ id
+  d2 $ fast (2) $ n "3 2 2 <2 3> 2 1 0 0" # "[808oh|ho]*4" 
+     & gain (12/8) & speed (4/8) # cut (1) # rel (1/16) 
+	  # bpf ((12/8)*2000) 
+  d1 $ shiftBy (1) $ plyWith "<2 6 3 <6 8>>" (( shiftBy ("<3 7>"/8) . (& speed (6/8) ) )) 
+       $ (# n "[13]" )
+       $ "SFX" & gain (16/8) 
+	& speed (10/8) # cut (-1) 
+	# lpf ((24/8)*2000)   
+  d3 $ jux ((& speed (10/8) )) $ slow (2) $ "Tenkitsune_Kick:0(<3 [4 0]>,8)" 
+       # orbit (0) & gain (16/8) 
+	# shape (7/8) & speed (6/8) & speed (4/8) 
+  d4 $ shiftBy (1) $ slow (2) $ n "2 [~ 3] [~ 5] ~" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) # orbit (0) # distort (0/8) & speed (12/16) 
+	  # rel (1/8) 
+           
+-- pretty cool 4.5/6 (w/ fafo)
+let fltr = 16
+in do
+  hush
+  all $ id
+  d2 $ fast (2) $ n "3 2 2 <2 3> 2 1 0 0" # "[808oh|ho]*4" 
+     & gain (12/8) & speed (4/8) # cut (1) # rel (1/16) 
+	  # bpf ((12/8)*2000) # lpf ((fltr/8)*2000) 
+  d1 $ shiftBy (1) $ plyWith "<2 6 3 <6 8>>" (( shiftBy ("<3 7>"/8) . (& speed (6/8) ) )) 
+       $ (# n "[13]" )
+       $ "SFX" & gain (16/8) 
+	& speed (10/8) # cut (-1) 
+	# lpf ((24/8)*2000)   # lpf ((fltr/8)*2000)
+  d3 $ jux ((& speed (10/8) )) $ slow (2) $ "Tenkitsune_Kick:0(<3 [4 0]>,8)" 
+       # orbit (0) & gain (16/8) 
+	# shape (2/8) & speed (6/8) & speed (4/8) 
+           # lpf ((fltr/8)*2000)
+  d4 $ shiftBy (1) $ slow (2) $ n "2 [~ 3] [~ 5] ~" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) # orbit (0) # distort (0/8) & speed (12/16) 
+	  # rel (1/8) 
+            # lpf ((fltr/8)*2000)
+  d5 $ loopAt (48/2) $ chop (8) $ slice (64) 
+          ( fast (8) $ "0 1 2 3 4 5 6 7" + "<0 8 16 24 32 40 48 56>") $ "fafo:1" 
+                # cut (1) # shape (4/8) & gain (13/8) 
+                   # orbit (0) & speed (6/8) 
+
+
+-- end at 12/16 so the teacher can suck your dick lmao
+do
+  hush
+  all $ id
+  d5 $ loopAt 48 $ chop (4) $ slice (64) 
+          ( fast (8) $ " ~ ~ 2 3 4 5 6 7" + "<56>") $ "fafo:1" 
+                # cut (1) # shape (4/8) & gain (13/8) 
+                   # orbit (0) 
+
+           
+-- pretty cool 4.5 
+-- chaotic linger shit
+do
+  hush
+  all $ id
+  all $ linger ("[7@3 [3]]/4"/8) . (# lpf ((9/8)*2000) ) . fast (3) 
+  d1 $ linger (8/8) $ (& speed ("[6 7]/2"/"<8!7 9>"))
+     $ shiftBy (-2) $ plyWith "<4 <6 8>>" (( shiftBy ("<3 7>"/"<8!7 16>") . (& speed (6/8)). (# rel (2/8) )))
+       $ (# n "[76]/2" )
+       $ "SFX" & gain (16/8) 
+	& speed (24/8) # cut (0) 
+	# rel (1/24) 
+  d3 $ slow (1) $ n "[11 ~]*2" # "Tenkitsune_Kick" 
+       # orbit (0) & gain (16/8) 
+	# shape (7/8) & speed (8/8) # rel (4/8) 
+  d2 $ while "<0!3 [0 1]>" (fast (2)) $ n "3 2 2 <2 3> 2 1 0 0" # "[808oh]*4" 
+     & gain (12/8) & speed (12/8) # cut (1) # rel (1/8) # distort (2/16) 
+  d4 $ slow (1) $ n "[~ -4] [2 -5 ~ 7]" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) # orbit (1) # rel (4/8) 
+       
+-- pretty cool 5/6
+-- fucking crazy
+do
+  hush
+  all $ linger (1/16)
+  all $ id
+  d2 $ fast (1) $ n "3 2 2 1 0 0" # "[808oh|ho]*4" 
+     & gain (12/8) & speed (8/8) # cut (1) # rel (1/8) 
+  d1 $ shiftBy (1) $ plyWith "<4 8>" (( shiftBy (3/8) . (& speed (6/8) ) )) 
+       $ (# n "[<14 14 14 13 14!4>]" )
+       $ "SFX" & gain (16/8) 
+	& speed (16/8) # cut (-1) -- # room (4/8) 
+  d3 $ jux ((& speed (6/8) )) $ slow (2) $ "Tenkitsune_Kick:0(<3 [4 0]>,8)" 
+       # orbit (0) & gain (16/8) 
+	# shape (7/8) & speed (6/8)
+  d4 $ shiftBy (1) $ slow (2) $ n "2 [~ 3] [~ 5] ~" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) -- # room (2/8) # size (1/16) 
+	# orbit (0) # distort (0/8) & speed (12/16) 
+	  # rel (1/8) 
+           
+-- pretty cool 6/6
+-- fucking crazy
+do
+  hush
+  all $ id
+  d2 $ fast (2) $ n "3 2 2 1 0 0" # "[808oh|ho]*4" 
+     & gain (12/8) & speed (8/8) # cut (1) # rel (1/8) 
+      # orbit (0) # shape (5/8) 
+  d1 $ fix  ((# pan ("[8 0]"/8) )) (n "13")
+    $ shiftBy (1) $ plyWith "<4 8>" (( shiftBy (3/8) . (& speed (6/8) ) )) 
+       $ (# n "[<14 14 14 13 14!4>]" )
+       $ "SFX" & gain (16/8) 
+	& speed (16/8) # cut (-1) -- # room (4/8) 
+  d3 $ jux ((& speed (4/8) )) $ slow (2) $ "Tenkitsune_Kick:0(<3 [4 0]>,8)" 
+       # orbit (0) & gain (16/8) 
+	# shape (7/8) & speed (6/8)
+  d4 $ jux (# waveloss 20) $ shiftBy (1) $ slow (2) $ n "2 [~ 3] [~ 5] ~" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) -- # room (2/8) # size (1/16) 
+	# orbit (0) # distort (0/8) & speed (12/16) 
+	  # rel (1/8) 
+           
+-- fucking crazy
+-- 4fl "take me to the church" beat
+do
+  hush
+  all $ id
+  d1 $ fix ((# pan ("[8 0]/2"/8)) .  chop (2) ) (n "13")
+     $ shiftBy (1) $ plyWith "<6>" (( shiftBy (-6/16) . (& speed (9/12) ) )) 
+       $ (# n ("<4>" +(0)))
+       $ "SFX" & gain (16/8) # rel (1/8) 
+	& speed (16/8) # cut (-1) # room (1/16) 
+  d3 $ linger (8/8) $ jux ((& speed (6/8) )) $ "Tenkitsune_Kick:9(2,8)" 
+       # orbit (0) & gain (16/8) 
+	# shape (3/8) & speed (8/8)
+  d4 $ slow (2) $ n "~ 4 [~ 3] [~ 5] 2 1 [~ 3] [~ 5]" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) -- # room (2/8) # size (1/16) 
+	# orbit (1) # distort (0/8) & speed (12/16) 
+	  # rel (1/8) 
+  d2 $ fast (1) $ n "3 2 2 1 0 0" # "[808oh|ho]*4" 
+     & gain (12/8) & speed (4/8) # cut (1) # rel (1/8) 
+      # orbit (0) # shape (5/8) # rel (1/8) # hpf ((12/8)*2000) 
+           
+-- mills-esque 1/4
+do
+  hush
+  all $ id
+  d1 $ inside 8 (iter (4)) $ chop (4) $ loopAt 8 $ slice (4) 
+     ("[[0] [1] [2] [3] [0] [1] [2] [3]]" )
+     $ "hottest_party_2:7" # cut "-1" & gain (16/8) 
+       & speed ("[6]"/8) # orbit (0) # shape (2/8) 
+          # hpf ((1/8)*2000) 
+  d3 $ linger (8/8) $ juxBy 0.2 ((& speed (6/8))) $ slow (2) $ "Tenkitsune_Kick(4,8)" 
+       # n "[10,2]" # orbit (0) & gain (16/8) 
+	# shape (6/8) & speed (4/8)
+  d4 $ n "~ ~ ~ -5 ~ <~!7 -3*2> -2 ~" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) # orbit (0) # distort (0/8) & speed (16/16) # rel (1/8) 
+        # hpf ((3/8)*2000) 
+         
+-- mills-esque 2/4
+do
+  hush
+  all $ id
+  d1 $ linger (8/16) $ inside 8 (iter (4)) $ chop (4) $ loopAt 8 $ slice (4) 
+     ("[[0] [1] [2] [3] [0] [1] [2] [3]]" )
+     $ "hottest_party_2:7" # cut "-1" & gain (11/8) 
+       & speed ("[6]"/8) # orbit (0) # shape (2/8) 
+  d3 $ linger (8/8) $ juxBy 0.2 ((& speed (6/8))) $ slow (2) $ "Tenkitsune_Kick(4,8)" 
+       # n "[10,2]" # orbit (0) & gain (16/8) 
+	# shape (3/8) & speed (6/8)
+  d4 $ n "~ ~ ~ 6 ~ <~!7 -3*2> -2 ~" # "Tenkitsune_Snare" & gain (14/8) 
+      # shape (6/8) # orbit (0) # distort (0/8) & speed (16/16) # rel (1/8) 
+         
+-- mills-esque 3/4
+do
+  hush
+  all $ (# lpf ((9/8)*2000) )
+  all $ id
+  d1 $ linger (8/16) $ inside 4 (iter (2)) $ chop (4) $ loopAt 8 $ slice (8) 
+     ( fast (2) $ "[[0] [1] [2] [3] [4] [5] [6] [7]]" )
+     $ "hottest_party_2:7" # cut "-1" & gain (11/8) 
+       & speed ("[8]"/8) # orbit (0) # shape (2/8) # lpf ((20/8)*2000) 
+  d3 $ linger (8/8) $ juxBy 0.2 ((& speed (6/8))) $ slow (2) $ "Tenkitsune_Kick(4,8)" 
+       # n "[17,2]" # orbit (0) & gain (16/8) 
+	# shape (4/8) & speed (6/8)
+         
+-- mills-esque 4/4
+do
+  hush
+  all $ (# lpf ((2/8)*2000) )
+  all $ id
+  d1 $ linger (8/16) $ chop (2) $ inside 4 (iter (2)) $ chop (4) $ loopAt 8 $ slice (8) 
+     ( fast (1) $ "[[0] [1] [2] [3] [4] [5] [6] [7]]" )
+     $ "hottest_party_2:7" # cut "-1" & gain (14/8) 
+       & speed ("[6]"/8) # orbit (0) # shape (3/8) # lpf ((20/8)*2000) 
+  d3 $ linger (8/8) $ juxBy 0.2 ((& speed (6/8))) $ iter (4) $ "Tenkitsune_Kick(3,8)" 
+       # n "[19,3]" # orbit (0) & gain (16/8) 
+	# shape (6/8) & speed (8/8)
+         
+
+-- strange
+-- hard
+do
+  all $ id
+  hush
+  d1 $ iter ("<1 [2@3 4]>") 
+     $ slow (2) $ ply (1) $ "808bd:5(3,8)" & gain (16/8) 
+            # shape (15/16) & speed (7/8) 
+	    # rel (8/8) # room (3/8) 
+  d2 $ loopAt 4 
+   $ slice (8*4) ( fast (4) 
+    $ "0 <0 1 3*2 2> 2 3 4 5 6 7"+ "<<0 4> [8 -6] [0 1 2 3] 8>") $ "breakcore_DOA_breaks" 
+    # n "35" # cut (1) & gain (18/8) # accelerate (-2/16) # distort (1/16) 
+      # orbit (0) # shape (3/8) 
+       
+-- hard
+do
+  all $ id
+  hush
+  d1 $ linger (16/16) $ iter ("<1 [2@3 4]>") 
+     $ slow (2) $ ply (1) $ "808bd:7(3,8)" & gain (16/8) 
+            # shape (15/16) & speed (7/8) 
+	    # rel (8/8) # room (3/8) 
+  d2 $ loopAt 4 
+   $ plysl (1) $ slice (8*4) ( fast (4) 
+    $ "0 <0 1 3*2 2> 2 3 4 5 6 7"+ "<<0 4> [8 -6] [0 1 2 3] 8>") 
+    $ "breakcore_New_Breaks" 
+    # n 58 # cut (1) & gain (15/8) # accelerate (-4/16) -- # distort (2/16) 
+      # orbit (0) # hpf ((1/16)*2000) 
+
+       
+-- hard
+do
+  all $ id
+  hush
+  d1 $ linger (16/16) $ iter ("<1 [2@3 4]>") 
+     $ slow (2) $ ply (1) $ "808bd:7(3,8)" & gain (16/8) 
+            # shape (15/16) & speed (7/8) 
+	    # rel (8/8) # room (3/8) 
+  d2 $ loopAt 4 
+   $ plysl (1) $ slice (8*4) ( fast (4) 
+    $ "0 <0 1 3*2 2> 2 3 4 5 6 7"+ "<<0 4> [8 -6] [0 1 2 3] 8>") 
+    $ "breakcore_New_Breaks" 
+    # n 58 # cut (1) & gain (15/8) # accelerate (-4/16) -- # distort (2/16) 
+      # orbit (0) # hpf ((1/16)*2000) 
+  d3 $ fast (2) $ iter (4) $ n "2 0 0 0" # "808oh"# cut (-1) 
+	& gain (10/8) # shape (3/8) & speed (8/8) 
+         # accelerate (-1/16) # lpf ((22/8)*2000) 
+       
+-- marching snare w/ 808
+do
+  all $ linger (1/32)
+  all $ id
+  hush
+  d1 $ slow (1) $ "808bd:5(3,8,<0 3 0 5>)" & gain (16/8) 
+            # shape (9/16) & speed (8/8) # krush (10) 
+	    # rel (8/8) # room (2/8) # pan (1/8) 
+  d2 $ loopAt 4 
+     $ inside 2 (plysl (2)) $ slice (8*2) ( fast (4) 
+      $ "0 <0 1 3*2 2> 2 3 4 5 6 7"+ "<0 8>") $ "breakcore_New_Breaks" 
+      # n 19 # cut (1) & gain (16/8) # accelerate (-2/16) -- # distort (2/16) 
+        # orbit (1) # pan ( fast (2) $ "4 [5 3]"/8) 
+        # hpf ((1/8)*2000)  
+         
+bpm 150
+ 
+-- shaker
+do
+  all $ linger (palindrome $ slow (4) $ "[1 .. 32]"/32)
+  all $ id 
+  hush
+  d1 $ "808bd:12(3,8)" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (1) 
+	    # cut "-1"
+  d2 $ fast ("8"/4) 
+     $ shiftBy (1) $ loopAt 16 
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0 1 1 2 4 0*2 24 7"+ "<48>") 
+      $ "breakcore_DOA_breaks" 
+      & speed (16/8) 
+      # n 3 # cut (1) & gain (11/8) # shape (1/8) 
+        # orbit (0) # krush (2) # rel (3/8)
+          # room (2/8) # size (1/24) 
+         
+-- Accel -1 type beat
+do
+  all $ linger (1/32)
+  all $ id 
+  hush
+  d1 $ "808bd(3,8)" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (2) 
+	    # cut "-1" 
+  d2 $ iter (1) $ loopAt 8 
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "[0] [1] [2] [3] [4] [5] [6] [7]"+ "<0 8 16 24>") 
+      $ "breakcore_New_Breaks" 
+      & speed (12/8) # accelerate (3/8) 
+      # n "[57 <58 59 50 60>]*4" # cut (1) & gain (11/8) # shape (1/8) 
+        # orbit (0) # krush (4) # rel (3/8)
+         
+-- echoy interlude
+do
+  all $ linger (  discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1] 0" $ slow (4) . linger (3/16) 
+  all $ id 
+  hush
+  d1 $ slow (1) $ "808bd:0(3,8,<0 3 0 5>)" & gain (13/8) 
+            # shape (5/16) & speed (8/8) # krush (10) 
+	    # cut "-1" # accelerate (-4/8) 
+  d2 $ loopAt 4 
+     $ slice (8*4) ( fast (4) 
+      $ inside 4 (iter (4)) $ "0 <0 1 3*2 2> 2 3 4 5 <7 6> 6"+ "<0 8 16 24>") 
+      $ "breakcore_DOA_breaks" # room (2/8) # size (7/8) 
+      # n 50 # cut (1) & gain (16/8) 
+        # orbit (1) # rel (2/8) 
+         
+-- bass clipped 
+-- this goes way harder than it has any fucking right to
+-- kind of interlude-y
+do
+  all $ linger (  discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1]*4 0" $ slow ("[2|4|4|4]") . linger (6/16) 
+  all $ id 
+  hush
+  d1 $ slow (4) $ "808bd:2(3,8,0)" & gain (13/8) 
+            # shape (12/16) & speed (8/8) # krush (2) 
+	    # cut "-1"
+  d2 $ loopAt 4 
+     $ slice (8*4) ( fast (4) 
+      $ "0 <0 1 3*2 2> 2 3 4 5*<1!15 8> <7 6> 6"+ "<16>") 
+      $ "breakcore_DOA_breaks"
+      # n "[<3 [3 14] 3 [3 15]> 2]*2" # cut (1) & gain (16/8) 
+        # rel (2/8) # shape (3/8) 
+  d3 $ slow (2) $ "~ 808sd:-1*1" & gain (16/8) # orbit (0) 
+              # rel (3/16) # shape (4/8) 
+
+  d4 $ shiftBy (-1) $ loopAt 48 $ chop (4) $ slice (64) 
+          (fast (8) $ "0 1 2 3 4 5 6 7" + "<0 8 16 24 32 40 48 56>") 
+            $ "serious_shit:0" 
+                # cut (1) # shape (6/8) 
+                   # orbit (0) 
+                    
+-- bass clipped 
+-- this goes way harder than it has any fucking right to
+-- kind of interlude-y
+do
+  all $ linger ( discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1]*4 0" $ slow ("[2|4|4|4]") . linger (6/16) 
+  all $ id 
+  hush
+  d1 $ slow (1) $ iter (2) $ "808bd:15(3,8,<-1 0>)" & gain (16/8) 
+            # shape (13/16) & speed (6/8) # krush (8) 
+	    # cut "-1" # lpf ((4/8)*2000) 
+  d2 $ loopAt 8 
+     $ slice (8*4) ( fast (8) $
+        "[0] [1] [2] [3] [4] [5] [6] [7]"+ "<0>") 
+      $ "breakcore_New_Breaks"
+      # n ("[49]*2"+(0)) # cut (0) & gain (16/8) 
+        # rel (2/8) # shape (3/8) # hpf ((2/8)*2000)  
+         & speed (6/8) # lpf ((21/8)*2000) # orbit (0) 
+  d3 $ slow (2) $ "808bd Tenkitsune_Snare:10*1" & gain (16/8) # orbit (0) 
+              # rel (3/16) # shape (4/8) 
+  d4 $ loopAt 48 $ chop (48) $ "serious_shit:1" 
+     & speed (8/8) # cut (1) & gain (13/8) # shape (7/8) 
+               # hpf ((2/8)*2000) # orbit (0) 
+                
+
+-- bass clipped double time
+-- w/ nice break fills
+do
+  all $ linger (  discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1] 0" $ slow (4) . linger (3/16) 
+  all $ id 
+  hush
+  d1 $ slow (1) $ "808bd:0(2,8)" & gain (13/8) 
+            # shape (12/16) & speed (8/8) # krush (2) 
+	    # cut "-1"
+  d2 $ loopAt 8 
+     $ slice (8*4) ( fast (4) $ plyWith 2 (+1) -- $ often (+"[2|3|4|5]")
+      $ "0 <0 1 3 2> 2 3 4 5 <7 6> 6"+ "<16>") 
+      $ "breakcore_DOA_breaks"
+      # n "[7]*4" # cut (1) & gain (16/8) 
+        # rel (2/8) & speed (6/8) 
+  d3 $ slow (2) $ "[~@3] [dr:1, 808ht:1] [~@3 dr:1] ~" & gain (16/8) # orbit (0) 
+              # rel (3/16) # shape (4/8) 
+               
+
+-- loud breaks w/ crash
+do
+  all $ linger ( discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1] 0" $ slow (4) . linger (6/16) 
+  all $ id 
+  hush
+  d1 $ slow (1) $ iter (1) $ "808bd:3([3@3 <1 8>],8)" & gain (13/8) 
+            # shape (8/16) & speed (8/8) # krush (3) # cut "-1"
+  d2 $ loopAt 8 
+     $ slice (8*4) ( fast (4)
+      $ "0 1 2 3 4 5 6 7"+ "<0>") 
+      $ "breakcore_DOA_breaks"
+      # n "[26@2 <26!3 0> <23!3 27 23!3 28>]*4" # cut (1) & gain (16/8) 
+  d3 $ slow (2) $ "[~@3 808ht:1*0] dr:1 [~@3 dr:1] ~" & gain (16/8) # orbit (0) 
+              # rel (3/16) # shape (4/8) 
+               
+
+-- subway turnstile hop techno
+do
+  all $ linger (  discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1] 0" $ slow (4) . linger (3/16) 
+  all $ id 
+  hush
+  d1 $ slow (1) $ "808bd:0(2,8)" & gain (13/8) 
+            # shape (12/16) & speed (8/8) # krush (2) 
+	    # cut "-1"
+  d2 $ loopAt 4 
+     $ slice (32) ( fast (4)
+      $ "0 1 2 3 4 5 6 7"+ "<0>") 
+      $ "breakcore_DOA_breaks"
+      # n "0 [[0|1|1|1|3|1]*6]@6 0" # cut (1) & gain (16/8) 
+      & speed (8/8) # lpf ((5/16)*2000) 
+  d3 $ slow (2) $ "[~@3 808ht:1*0] dr:-1 [~@3 dr:1] dr:-1*1" & gain (16/8) # orbit (1) 
+              # rel (2/16) # shape (6/8) 
+               
+
+-- greitch style w/ loud cy hit on 4
+do
+  all $ linger ( discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1]*4 [0@3 [1|0]]" $ slow (4) . linger (6/16) . chop 4
+  all $ id 
+  hush
+  d1 $ slow (1) $ "Tenkitsune_Kick:10(<2!6 3 [2 3]>,8)" & gain (16/8) 
+            # shape (6/16) & speed (8/8) # krush (4) 
+	    # cut "-1" # rel (2/8) 
+  d2 $ loopAt 4 
+     $ chop (1) $ slice (32) ( fast (4)
+      $ "0 1 2 3 4 5 6 7"+ "<0>") 
+      $ "breakcore_DOA_breaks"
+      # n "[35@3 18]*2" # cut (1) & gain (16/8) 
+      & speed (8/8) # orbit (0) 
+  d3 $ slow (2) $ "[~@3 808lt:3*1] 808sd:-1 [~@3 808sd:-1] dr:1*1" & gain (16/8) # orbit (1) 
+              # rel (4/16) # shape (4/8) 
+               
+-- DOA groove, PA announcement
+do
+  all $ linger (  discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1] 0" $ slow (4) . linger (3/16) 
+  all $ chop ("1 2") . linger ("<3!3 8>"/8) -- tight
+  all $ id 
+  hush
+  d1 $ slow (1) $ "Tenkitsune_Kick:14(<2!7 3>,8)" & gain (16/8) 
+            # shape (6/16) & speed (8/8) # krush (4) 
+	    # cut "-1" # rel (2/8) 
+  d2 $ loopAt 4 
+     $ chop (1) $ slice (32) ( fast (4)
+      $ "<[0 1 2 3 4 5 6 7]!3 [ 0 1 3*<1 2> 0 4 3 0 14 ]>"+ "<0>") 
+      $ "breakcore_DOA_breaks"
+      # n "[43]" # cut (1) & gain (16/8) 
+      & speed (8/8) # orbit (0) # lpf ((13/8)*2000) 
+  d3 $ slow (2) $ "[~@3 808lt:3*1] 808sd:-1 [~@3 808sd:-1] dr:1*0" & gain (16/8) # orbit (1) 
+              # rel (4/16) # shape (6/8) 
+               
+-- chase thru the car factory
+do
+  all $ linger (  discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1] 0" $ slow (4) . linger (3/16) 
+  all $ id 
+  hush
+  d1 $ slow (1) $ "[Tenkitsune_Kick:25 808oh:2]*2" & gain (16/8) 
+            # shape (14/16) & speed (10/8) # krush (2) 
+	    # cut "0"
+  d2 $ loopAt 4 
+     $ chop (1) $ slice (32) ( fast (4)
+      $ "0 1 2 3 4 5 6 7"+ "<0 8 16 24>") 
+      $ "breakcore_DOA_breaks"
+      # n "[58]" # cut (1) & gain (15/8) 
+      & speed (4/8) # orbit (0) -- # lpf ((13/8)*2000) 
+  d3 $ slow (2) $ "[~@3 808lt:3*1] 808sd:-1 [~@3 808sd:-1] dr:1*0" & gain (16/8) # orbit (1) 
+              # rel (4/16) # shape (6/8) 
+               
+
+-- highway chase interlude
+do
+  all $ linger (discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1]*4 0" $ slow (4) . linger (3/16) 
+  all $ id 
+  hush
+  d1 $ loopAt 4 
+     $ chop (1) $ slice (32) ( fast (4)
+      $ "0 1 2 3 4 5 6 7" + "<0 8 16 24>") 
+      $ "breakcore_New_Breaks"
+      # n "[[130|130|136] 130@3]*2" # cut (0) & gain (14/8) 
+       # orbit (0) 
+  d2 $ slow (1) $ "[808bd:5 808:4!2]*2" & gain (16/8) 
+            # shape (14/16) & speed (8/8) # krush (2) 
+	    # cut "-1" # rel (1/16) 
+               
+-- harmonizing breaks aliasing
+do
+  all $ id
+  hush
+  d1 $ n ( slow 2 $
+	"<[[3] [1] [~] [<~>] [~] [~] [~] [~ <~ 1>]] \
+	 \[[~ 0] [1] [~] [<~>] [~] [~ ~] [~] [~ <~ ~>]] \
+         \[[5*2] [1] [~] [<~>] [~] [~] [~] [~ <~ 1>]] \
+         \[[1 ~] [<~ ~>] [~] [<~>] [~] [1] [~] [~]] >") 
+      # "808bd" & gain (16/8) # shape (5/8) # rel (7/8) & speed (9/8) 
+	    # lpf ((7/8)*2000) # triode (2) 
+  d2 $ loopAt 8 $ fast "1 1 1 < 1 1 2 [1.5 1 1 1.5]>" $ chop (1)
+     $ slice 32 
+      ( fast 4 $ -- rarely (+("-3@3 2")) $
+	"<[[0]*1 [0] [2] [<3>] [3] [5] [6] [6 <~ 0>]] \
+	 \[[1]*1 [0] [2] [<3>] [3] [4*2] [5*[1 8]] [~ <~ 4>]] \
+         \[[3]*<3> [0] [2] [<3>] [4*2] [4] [6] [~ <7 0>]] \
+         \[[0 1]*1 [<~ -1>] [2] [<3>] [15] [0] [18] [21]*2] >") 
+        $ "breakcore_160BPM"
+	# n "111" # cut "-1" & gain (13/8)
+	& speed (16/16) # krush (4) # orbit (0) 
+
+
+-- hpf'd break interlude intro
+ -- alien
+do
+  all $ linger (discretize (4) $ slow (2) $ "{2 8 8 8 8 32 16}%2 32!3"/32)
+  all $ while "[0|1]*4 0" $ slow (2) . linger (3/16) 
+  all $ (# hpf ((8/8)*2000) )
+  hush
+  d1 $ loopAt 4 
+     $ chop (1) $ slice (32) ( fast (4)
+      $ "0 1 2 3 4 5 6 7" + "<0 8 16 24>") 
+      $ "breakcore_New_Breaks"
+      # n "[136]" # cut (0) & gain (14/8) 
+       # orbit (0) 
+  d2 $ slow (1) $ "[808bd:12*0 808:4]*2" & gain (16/8) 
+            # shape (14/16) & speed (8/8) # krush (2) 
+	    # cut "-1" # rel (4/16) # orbit (0) 
+             
+-- this is bangss 1/2
+-- has a bassline lmao
+do
+  all $ linger ("[3!3 8]/2"/8)
+  all $ id
+  hush
+  d1 $ n ( slow 2 $ rarely ( linger (3/8) )
+	"<[[3] [1] [~] [<~>] [~] [~] [~] [~ <~ 1>]] \
+	 \[[~ 0] [1] [~] [<~>] [~] [~ ~] [~] [~ <~ ~>]] \
+         \[[5*2] [1] [~] [<~>] [~] [~] [~] [~ <~ 1>]] \
+         \[[1 ~] [<~ ~>] [~] [<~>] [~] [1] [~] [~]] >") 
+      # "808bd" & gain (18/8) # shape (7/8) # rel (7/8) & speed (8/8) 
+	    # triode (4) # crush (8) # room (3/8) 
+  d2 $ loopAt 8 $ fast "1 1 1 < 1 1 2 [1.5 1 1 1.5]>" $ chop (1)
+     $ slice 32 
+      ( fast 4 $ rarely (+("-3@3 2")) $
+	"<[[0]*1 [0] [2] [<3>] [3] [5] [6] [6 <~ 0>]] \
+	 \[[1]*1 [0] [2] [<3>] [3] [4*2] [5*[1 8]] [~ <~ 4>]] \
+         \[[3]*<3> [0] [2] [<3>] [4*2] [4] [6] [~ <7 0>]] \
+         \[[0 1]*1 [<~ -1>] [2] [<3>] [15] [0] [18] [21]*2] >") 
+        $ "breakcore_160BPM"
+	# n (11) # cut "-1" & gain (13/8) # room (1/8) 
+	& speed (16/16) # krush (4) # orbit (0) 
+             
+-- this is bangss 2/2
+-- has a bassline lmao
+do
+  all $ chop (4) . hurry (8/8)
+  all $ id
+  hush
+  d1 $ fix (& speed (24/8)) (n "3")  $ n ( slow 2 $
+	"<[[3] [1] [~] [<~>] [~] [~] [~] [~ <~ 1>]] \
+	 \[[~ 0] [1] [~] [<~>] [~] [~ ~] [~] [~ <~ ~>]] \
+         \[[5*2] [1] [~] [<~>] [~] [~] [~] [~ <~ 1>]] \
+         \[[1 ~] [<~ ~>] [~] [<~>] [~] [1] [~] [~]] >" + 2) 
+      # "kicklinn" & gain (16/8) # shape (7/8) # rel (7/8) & speed (6/8) 
+  d2 $ loopAt 8 $ chop (1)
+     $ slice 32 
+      ( fast 4 $ while "0@7 [0|1]*2" (+("[2|3]")) $
+	"<[[0]*1 [0] [2] [<3>] [3] [5] [6] [6 <~ 0>]] \
+	 \[[1]*1 [0] [2] [<3>] [3] [4*2] [5*[1 8]] [~ <~ 4>]] \
+         \[[3]*<3> [0] [2] [<3>] [4*2] [4] [6] [~ <7 0>]] \
+         \[[0 1]*1 [<~ -1>] [2] [<3>] [15] [0] [18] [21]*2] >") 
+        $ "breakcore_160BPM"
+	# n 183 # cut "-1" & gain (13/8)
+	& speed (16/16) # krush (4) # orbit (0) 
+         
+-- start of lil 4-floor prog section
+ 
+-- gentle guitar riff
+-- off a 4-floor groove
+-- 4-floor 1/4
+do
+  all $ id 
+  hush
+  d1 $ slow (1) $ "808bd(<2>,8)" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (1) 
+	    # cut "-1" 
+  d2 $ loopAt 8 
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0 1 1 2 4 0*2 24 7"+ "<48>") 
+      $ "breakcore_New_Breaks" 
+      & speed (7/8) # waveloss (24) 
+      # n 63 # cut (1) & gain (13/8) # shape (1/8) 
+        # orbit (0) # krush (3) # rel (3/8) 
+  d3 $ "[~ dr:14]*<2>" & gain (19/8) # orbit (0) 
+              # rel ("[1|2]*8"/24) # shape (7/8) 
+               # crush (8) # room (1/24) # size (1/100) 
+                
+-- off a 4-floor groove w/ fkd drums
+-- 4-floor 2/4
+do
+  all $ id 
+  hush
+  d1 $ slow (1) $ "808bd(<2>,8)" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (1) 
+	    # cut "-1" 
+  d2 $ loopAt 8 
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0 1 1 2 4 0*2 24 7"+ "<48>") 
+      $ "breakcore_New_Breaks" 
+      & speed (5/8) # waveloss (8) 
+      # n 62 # cut (1) & gain (11/8) # shape (1/8) 
+        # orbit (0) # krush (2) # rel (3/8) 
+  d3 $ "~ Tenkitsune_Snare:7*<1>" & gain (19/8) # orbit (0) 
+              # rel (2/16) # shape (7/8) 
+               & speed (8/8) 
+
+-- fkd drums w/ clap prog.
+-- prog.
+-- 4-floor 3/4
+do
+  all $ id 
+  hush
+  d1 $ slow (1) $ "808bd(<2>,8)" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (1) 
+	    # cut "-1" 
+  d2 $ loopAt 8 
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0 1 1 2 4 0*2 24 7"+ "<48>") 
+      $ "breakcore_New_Breaks" 
+      & speed (5/8) # waveloss (8) 
+      # n "[<6 7> 62 62 62]*8" # cut (1) & gain (11/8) # shape (1/8) 
+        # orbit (0) # krush (3) # rel (3/8) # room (1/16) 
+  d3 $ "~ Tenkitsune_Snare:10*<1>" & gain (19/8) # orbit (0) 
+              # rel (2/16) # shape (7/8) 
+                
+-- tight, busy groove w/ pickup trill
+-- 4-floor 4/4
+do
+  all $ linger (3/8) 
+  all $ id 
+  hush
+  d1 $ "808bd(<2>,8)" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (4) 
+	    # cut "-1" 
+  d2 $ loopAt 8 
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0 1 1 2 4 0*2 24 7"+ "<48>") 
+      $ "breakcore_New_Breaks" 
+      & speed (5/8) # waveloss (8) 
+      # n "[<8> 62 24 62]*8" # cut (1) & gain (11/8) # shape (1/8) 
+        # orbit (0) # krush (3) # rel (3/8) 
+  d3 $ "~ odx:13*<1>" & gain (19/8) # orbit (1) 
+              # rel (6/16) # shape (7/8) # cut (1) 
+               & speed (12/8) 
+                
+                 
+-- printer jammed
+do
+  all $ id 
+  hush
+  d1 $ "[808bd print:11]*2" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (4) 
+	    # cut "-1" # rel (2/8) 
+  d2 $ loopAt 8 
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0 1 1 2 4 0*2 24 7"+ "<48>") 
+      $ "breakcore_New_Breaks" 
+      & speed (5/8) # waveloss (8) 
+      # n "[<8> 62 8 62]*8" # cut (1) & gain (11/8) # shape (1/8) 
+        # orbit (0) # krush (3) # rel (3/8) 
+
+-- end of lil 4-floor prog section
+         
+         
+-- drums hit the ground
+-- sick
+do
+  all $ linger (3/8)
+  all $ id 
+  hush
+  d1 $ slow (2) $ "[808bd:15](3,8)" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (4) 
+	    # cut "-1" # rel ("[3 1]*2"/16) 
+  d2 $ loopAt 8 
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0*<8 1!31> < 1 ~ > <~!3 6> 4 <14> 0*2 24 7"+ "<48>") 
+      $ "breakcore_New_Breaks" 
+      & speed (5/8) # waveloss (8) 
+      # n "[<[24 23@7] [23@3 33] 23 24>]*2" # cut (1) & gain (13/8) # shape (1/8) 
+        # orbit (0) # krush (3) # rel (3/8) # hpf ((1/8)*2000) 
+  d4 $ loopAt 16 $ chop (4) $ slice (8*4) 
+        ( fast (4) $ "0 1 2 3 4 5 6 7"+"<0 8 16 24>") $ "crime_pays"
+          # cut "-1" & gain (10/8) # shape (3/8) 
+            # hpf ((1/8)*2000) & speed (6/8) 
+             
+-- drums hit the ground
+-- sick
+do
+  all $ linger (3/8)
+  all $ id 
+  hush
+  d1 $ slow (1) $ iter (4) $ "[808bd:5](3,8)" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (4) 
+	    # cut "-1" # rel ("[3 1]*2"/12) 
+  d2 $ loopAt 8 
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0*<8 1!31> < 1 ~ > <~!3 6> 4 <14> 0*2 24 7"+ "<48>") 
+      $ "breakcore_New_Breaks" 
+      & speed (5/8) # waveloss (16) 
+      # n "[<[24 15@6 [17 24]] [24 15@14 24]>]" 
+        # cut (1) & gain (12/8) # shape (4/8) 
+        # orbit (0) # krush (0) # rel (3/8) # hpf ((1/16)*2000) 
+          & speed (8/8) 
+  d4 $ loopAt (2*32) $ chop (4) $ slice (8*4) 
+        ( fast (4) $ "0 1 2 3 4 5 6 7"+"<0 8 16 24>") $ "crime_pays:1"
+          # cut "-1" & gain (13/8) # shape (2/8) 
+            # hpf ((1/8)*2000) & speed (8/8) # orbit (0) 
+         
+         
+-- atop a tall building 4fl
+do
+  all $ id 
+  hush
+  d1 $ slow (2) $ "[808bd print:10 print:9 < ~ ~ ~ print:13>]*2" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (4) 
+	    # cut "-1" # rel ("[3 1@3]*2"/16) 
+  d2 $ loopAt 8 
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0 1 1 2 4 0*2 24 7"+ "<48>") 
+      $ "breakcore_New_Breaks" 
+      & speed (5/8) # waveloss (8) 
+      # n "[<19>]*8" # cut (1) & gain (11/8) # shape (1/8) 
+        # orbit (0) # krush (3) # rel (3/8) 
+         
+-- drums in sewer transition
+-- BEWARE: THIS IS THE END OF THE FILE
+do
+  all $ id 
+  all $ (# hpf ((8/8)*2000) )
+  hush
+  d1 $ slow (2) $  "[808bd]*2" & gain (16/8) 
+            # shape (15/16) & speed (8/8) # krush (4) 
+	    # cut "2" # rel ("[7]*2"/16) 
+  d2 $ loopAt 16 
+     $ degradeBy (2/8)
+     $ sometimesBy 0.3 ( plyWith (2) (& speed (16/8) ) )
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0 < 1 ~> <~!3 6> 4 <14> < ~ 0 > 24 7"+ "<48>") 
+      $ "breakcore_New_Breaks" 
+      & speed (5/8) # waveloss (8) 
+      # n "[48!3 23]*8" # cut (1) & gain (11/8) # shape (1/8) 
+        # orbit (0) # krush (3) # rel (3/8) 
+         
+-- drums in sewer transition
+-- BEWARE: THIS IS THE END OF THE FILE
+let fdout = (0/8)
+in do
+  all $ id 
+  hush
+  d2 $ loopAt 4 
+     $ slow (2) $ slice (8*4 + 0) ( fast (8) 
+      $ "[[0] [1] [2] [3] [4] [5] [6] [7*1]]"+ "<48>") 
+      $ "hottest_party_2" 
+      & speed (fdout*0.8) # waveloss (8) 
+      # n "[19]" # cut (1) & gain (9/8) # shape (1/8) 
+        # orbit (0) # krush (6) # rel (3/8) 
+         # hpf ((6/8)*2000) # room (4/8) # size (7/8) 
+  d1 $ loopAt 8 
+     $ degradeBy (2/8)
+     $ sometimesBy 0.3 ( plyWith (2) (& speed (16/8) ) )
+     $ slice (8*4 + 0) ( fast (8) 
+      $ "0 < 1 ~> <~!3 6> 4 <14> < ~ 0 > 24 7"+ "<48>") 
+      $ "breakcore_New_Breaks" 
+      & speed (5/8) # waveloss (8) 
+      # n "[48!3 23]*8" # cut (1) & gain (11/8) # shape (1/8) 
+        # orbit (1) # krush (3) # rel (3/8) 
+          & speed (fdout*0.8) # hpf ((3/16)*2000) 
+
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
+-- BEWARE: THIS IS THE END OF THE FILE
